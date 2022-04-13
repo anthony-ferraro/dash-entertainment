@@ -1,0 +1,332 @@
+.heading-L, .error_404 {
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 40.32px;
+}
+
+.heading-M {
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 30.24px;
+}
+
+.heading-S, .trending-item .content-info > p:nth-of-type(2) {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 30.24px;
+}
+
+.heading-XS, .content-info > p:nth-of-type(2) {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22.68px;
+}
+
+.body-M {
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 18.9px;
+}
+
+.body-S, .input.error::after, .content-info > p:nth-of-type(1) {
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 16.38px;
+}
+
+.c-red, .input.error::after {
+  color: var(--red);
+}
+
+.bg-red, .button {
+  background-color: var(--red);
+}
+
+.c-darkblue {
+  color: var(--darkblue);
+}
+
+.bg-darkblue {
+  background-color: var(--darkblue);
+}
+
+.c-fadedgrey, .input::-webkit-input-placeholder, .search::-webkit-input-placeholder {
+  color: var(--fadedgrey);
+}
+
+.c-fadedgrey, .input:-ms-input-placeholder, .search:-ms-input-placeholder {
+  color: var(--fadedgrey);
+}
+
+.c-fadedgrey, .input::-ms-input-placeholder, .search::-ms-input-placeholder {
+  color: var(--fadedgrey);
+}
+
+.c-fadedgrey, .input::placeholder, .search::placeholder {
+  color: var(--fadedgrey);
+}
+
+.bg-fadedgrey, .trending-item {
+  background-color: var(--fadedgrey);
+}
+
+.c-greyblue {
+  color: var(--greyblue);
+}
+
+.bg-greyblue {
+  background-color: var(--greyblue);
+}
+
+.c-semidarkblue, .button:hover {
+  color: var(--semidarkblue);
+}
+
+.bg-semidarkblue {
+  background-color: var(--semidarkblue);
+}
+
+.c-white, .button, .input, .search, .trending-item .content-info > p:nth-of-type(2), .content-info > p:nth-of-type(2), .error_404 {
+  color: #ffffff;
+}
+
+.bg-white, .button:hover {
+  background-color: #ffffff;
+}
+
+.button {
+  border-radius: 6px;
+  border: none;
+  -webkit-transition: background-color 0.1s linear, color 0.1s linear;
+  transition: background-color 0.1s linear, color 0.1s linear;
+}
+
+.button:hover {
+  -webkit-transition: background-color 0.1s linear, color 0.1s linear;
+  transition: background-color 0.1s linear, color 0.1s linear;
+  cursor: pointer;
+}
+
+.input {
+  caret-color: var(--red);
+  border-bottom: 1px var(--greyblue) solid;
+  position: relative;
+}
+
+.input:focus {
+  border-bottom: 1px white solid;
+}
+
+.input.error {
+  border-bottom: 1px var(--red) solid;
+}
+
+.input.error::after {
+  content: "Can't be empty";
+  position: absolute;
+  right: -20px;
+}
+
+.search {
+  background-color: inherit;
+  caret-color: var(--red);
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.search:focus {
+  border-bottom: 1px var(--greyblue) solid;
+}
+
+.search:hover {
+  cursor: pointer;
+}
+
+.search-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px;
+  padding-left: 0px;
+}
+
+.search-wrapper img {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.search-button {
+  width: 100px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin-left: 20px;
+}
+
+.trending-list {
+  height: 230px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 15px;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+}
+
+.trending-list::-webkit-scrollbar {
+  display: none;
+}
+
+.trending-item {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  width: 470px;
+  height: 230px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.trending-item .bookmark {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.trending-item:hover {
+  cursor: pointer;
+}
+
+.trending-item .content-info {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.trending-item .content-info > p:nth-of-type(1) {
+  color: #cccccc;
+  margin-bottom: 5px;
+}
+
+.content-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 40px;
+  padding-top: 10px;
+}
+
+.content-item {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+  min-width: 280px;
+  height: 175px;
+}
+
+.content-thumbnail {
+  width: 100%;
+  height: 80%;
+  border-radius: 8px;
+}
+
+.content-thumbnail:hover {
+  cursor: pointer;
+}
+
+.content-info > p:nth-of-type(1) {
+  color: #cccccc;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.error_404 {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 40px;
+  padding-bottom: 200px;
+  padding-top: 100px;
+}
+
+.error_404 .button {
+  width: 150px;
+  padding: 10px;
+}
+
+@media (max-width: 1300px) {
+  .content-list {
+    gap: 30px;
+  }
+  .content-item {
+    min-width: 220px;
+  }
+}
+
+@media (max-width: 800px) {
+  .search-button {
+    display: none;
+  }
+  .trending-list {
+    height: 140px;
+    padding: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .trending-item {
+    width: 240px;
+    height: 100%;
+    background-size: auto;
+  }
+  .trending-item .content-info > p:nth-of-type(1) {
+    font-size: 12px;
+    margin: 0;
+  }
+  .trending-item .content-info > p:nth-of-type(2) {
+    font-size: 15px;
+    line-height: 20px;
+  }
+  .content-item {
+    min-width: 164px;
+  }
+  .error_404 {
+    font-size: 30px;
+  }
+}
+/*# sourceMappingURL=styles.css.map */

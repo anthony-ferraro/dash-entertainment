@@ -1,0 +1,156 @@
+// Text Styles
+.heading-L {
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 40.32px;
+}
+
+.heading-M {
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 30.24px;
+}
+
+.heading-S {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 30.24px;
+}
+
+.heading-XS {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22.68px;
+}
+
+.body-M {
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18.9px;
+}
+
+.body-S {
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 16.38px;
+}
+
+// Colors
+.c-red {
+    color: var(--red);
+}
+
+.bg-red {
+    background-color: var(--red);
+}
+
+.c-darkblue {
+    color: var(--darkblue);
+}
+
+.bg-darkblue {
+    background-color: var(--darkblue);
+}
+
+.c-fadedgrey {
+    color: var(--fadedgrey);
+}
+
+.bg-fadedgrey {
+    background-color: var(--fadedgrey);
+}
+
+.c-greyblue {
+    color: var(--greyblue);
+}
+
+.bg-greyblue {
+    background-color: var(--greyblue);
+}
+
+.c-semidarkblue {
+    color: var(--semidarkblue);
+}
+
+.bg-semidarkblue {
+    background-color: var(--semidarkblue);
+}
+
+.c-white {
+    color: #ffffff;
+}
+
+.bg-white {
+    background-color: #ffffff;
+}
+
+// Interactive Elements
+.button {
+    @extend .bg-red;
+    @extend .c-white;
+    border-radius: 6px;
+    border: none;
+    transition: background-color 0.1s linear, color 0.1s linear;
+    &:hover {
+        @extend .bg-white;
+        @extend .c-semidarkblue;
+        transition: background-color 0.1s linear, color 0.1s linear;
+        cursor: pointer;
+    }
+}
+
+.input { // used for input fields 
+    @extend .c-white;
+    caret-color: var(--red);
+    border-bottom: 1px var(--greyblue) solid;
+    &::placeholder {
+        @extend .c-fadedgrey;
+    }
+
+    &:focus {
+        border-bottom: 1px white solid;
+    }
+    position: relative;
+    &.error {
+        border-bottom: 1px var(--red) solid;
+        &::after {
+            content: "Can't be empty";
+            position: absolute;
+            right: -20px;
+            @extend .c-red;
+            @extend .body-S;
+        }
+    }
+}
+
+.search { // used for the search bar
+    @extend .c-white;
+    background-color: inherit;
+    caret-color: var(--red);
+    border: none;
+    outline: none;
+    width: 100%;
+    &::placeholder {
+        @extend .c-fadedgrey
+    }
+    &:focus {
+        border-bottom: 1px var(--greyblue) solid;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+// .bookmark {
+//     background-color: #979797;
+//     border-radius: 50%;
+//     width: 32px;
+//     height: 32px;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     &:hover {
+//         @extend .bg-white;
+//         cursor: pointer;
+//     }
+// }
