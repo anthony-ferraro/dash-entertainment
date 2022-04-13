@@ -1,6 +1,7 @@
 import React from 'react'
-
-const SearchBar = ({ path, searchQuery, setSearchQuery }) => {
+import Image
+ from 'next/dist/client/image';
+const SearchBar = ({ router, path, searchQuery, setSearchQuery }) => {
     const searchForText = path === "tv" ? "TV Series" : path === "movies" ? "Movies" : "Movies and TV Series";
     const handleSearch = () => {
         if (searchQuery !== "") {
@@ -10,7 +11,7 @@ const SearchBar = ({ path, searchQuery, setSearchQuery }) => {
     return (
         <>
             <div className="search-wrapper">
-                <img src="/assets/icon-search.svg" alt="magnifying glass" />
+                <img src="/assets/icon-search.svg" alt="magnifying glass"></img>
                 <input type="text" value={searchQuery} onKeyDown={e => e.key === 'Enter' && handleSearch()} onChange={(e) => setSearchQuery(e.target.value)} name="search" id="search" className="search" placeholder={`Search for ${searchForText}`}></input>
                 <button className="button search-button" onClick={() => handleSearch()}>Search</button>
             </div>

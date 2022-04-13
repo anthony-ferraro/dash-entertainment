@@ -4,7 +4,7 @@ const search = ({ router, content }) => {
     const searchResults = content.filter(contentItem => contentItem.title.toLowerCase().includes(router.query.query.toLowerCase()));
     return (
         <>
-            <p className="heading-L c-white">Found {searchResults.length} results for "{router.query.query}"</p>
+            <p className="heading-L c-white">Found {searchResults.length} results for &quot;{router.query.query}&quot;</p>
             <ContentList content={searchResults}></ContentList>
         </>
     )

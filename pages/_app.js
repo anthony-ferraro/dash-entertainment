@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }) {
       <div className="main">
         <Navbar router={router} ></Navbar>
           <div className="container">
-            {(currentPath==="" || currentPath==="tv" || currentPath==="movies") && <SearchBar currentPath={currentPath} searchQuery={searchQuery} setSearchQuery={setSearchQuery}></SearchBar>}
+            {(currentPath==="" || currentPath==="tv" || currentPath==="movies") && <SearchBar router={router} path={currentPath} searchQuery={searchQuery} setSearchQuery={setSearchQuery}></SearchBar>}
             <Component {...pageProps} router={router} searchQuery={searchQuery} setSearchQuery={setSearchQuery}></Component>
           </div>
         </div>

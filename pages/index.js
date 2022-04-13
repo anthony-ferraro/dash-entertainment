@@ -1,4 +1,4 @@
-
+import Image from "next/dist/client/image";
 import ContentList from "../components/ContentList"
 export default function Home({ content }) {
   const trendingContent = content.filter(contentItem => contentItem.isTrending === true);
@@ -8,7 +8,7 @@ export default function Home({ content }) {
       <p className="heading-L c-white">Trending</p>
       <div className="trending-list">
         {trendingContent.map((contentItem, index) =>
-          <div key={"/"+index.toString()} className="trending-item"
+          <div key={index} className="trending-item"
             style={{
               backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url(${contentItem.thumbnail.trending.large})`,
               backgroundSize: 'cover',

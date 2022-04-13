@@ -1,21 +1,11 @@
 import React from 'react'
-
+import ContentList from '../../components/ContentList'
 const index = ({ content }) => {
+    
     return (
         <>
             <p className="heading-L c-white">Movies</p>
-            <div className="content-list">
-                {content.filter((contentItem) => contentItem.category==="Movie").map((contentItem, index) =>
-                    <div className="content-item">
-                        <div key={index} className="content-thumbnail" style={{ backgroundImage: `url(../${contentItem.thumbnail.regular.large})`, backgroundSize: 'cover', }}>
-                        </div>
-                        <div key={index} className="content-info">
-                            <p>{contentItem.year}  <span>&#8226;</span>   <img src={`../assets/icon-category-${contentItem.category === "Movie" ? "movie" : "tv"}.svg`} alt="category symbol"></img> {contentItem.category} <span>&#8226;</span>  {contentItem.rating}</p>
-                            <p>{contentItem.title}</p>
-                        </div>
-                    </div>
-                )}
-            </div>
+            <ContentList content={content}></ContentList>
         </>
     )
 }
