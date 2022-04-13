@@ -1,5 +1,6 @@
 import Image from "next/dist/client/image";
 import ContentList from "../components/ContentList"
+import { server } from "../config/";
 export default function Home({ content }) {
   const trendingContent = content.filter(contentItem => contentItem.isTrending === true);
   const recommendedContent = content.filter(contentItem => contentItem.isTrending === false);
@@ -27,7 +28,7 @@ export default function Home({ content }) {
 }
 
 export const getServerSideProps = async () => {
-  const res = await fetch(`http://localhost:3000/api/content`)
+  const res = await fetch(`${server}/api/content`)
   const content = await res.json()
 
   return {

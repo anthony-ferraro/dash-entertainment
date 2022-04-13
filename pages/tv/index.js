@@ -1,5 +1,6 @@
 import React from 'react'
 import ContentList from '../../components/ContentList'
+import { server } from '../../config'
 const index = ({ content }) => {
     return (
         <>
@@ -12,7 +13,7 @@ const index = ({ content }) => {
 export default index
 
 export const getServerSideProps = async () => {
-    const res = await fetch(`http://localhost:3000/api/content`)
+    const res = await fetch(`${server}/api/content`)
     const content = await res.json()
 
     return {

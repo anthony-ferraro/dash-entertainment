@@ -1,5 +1,6 @@
 import React from 'react'
 import ContentList from '../../../components/ContentList';
+import { server } from '../../../config';
 
 const search = ({ router, content }) => {
     const searchResults = content.filter(contentItem => contentItem.title.toLowerCase().includes(router.query.query.toLowerCase()));
@@ -14,7 +15,7 @@ const search = ({ router, content }) => {
 export default search
 
 export const getServerSideProps = async () => {
-    const res = await fetch(`http://localhost:3000/api/content`)
+    const res = await fetch(`${server}/api/content`)
     const content = await res.json()
 
     return {
