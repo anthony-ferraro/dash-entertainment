@@ -1,0 +1,26 @@
+.search-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px;
+  padding-left: 0px;
+}
+
+.search-wrapper img {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.search-button {
+  width: 100px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin-left: 20px;
+}
+/*# sourceMappingURL=SearchBar.module.css.map */
