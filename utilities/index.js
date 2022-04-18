@@ -1,5 +1,5 @@
 export const HOST = (process.env.NODE_ENV !== 'production') ? 'http://localhost:3000' : 'https://dash-entertainment.vercel.app'
-export const API_KEY = "3ab8cbaaf33601b17a319fdcd7af44f3"
+export const API_KEY = "3ab8cbaaf33601b17a319fdcd7af44f3";
 export const fetcher = (url) => fetch(url).then(res => res.json())
 // export default function fetcher(...urls) {
 //     const f = (u) => fetch(u).then((r) => r.json());
