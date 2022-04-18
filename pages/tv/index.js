@@ -1,24 +1,9 @@
-import React from 'react'
-import ContentList from '../../components/ContentList'
-import { server } from '../../config'
-const index = ({ content }) => {
+import { paths } from "../../utilities";
+import GenreList from "../../components/GenreList";
+export default function index({ router }) {
     return (
         <>
-            <p className="heading-L c-white">TV Series</p>
-            <ContentList content={content}></ContentList>
+            <GenreList path={paths.genres.tv} router={router}></GenreList>
         </>
     )
-}
-
-export default index
-
-export const getServerSideProps = async () => {
-    const res = await fetch(`${server}/api/content`)
-    const content = await res.json()
-
-    return {
-        props: {
-            content
-        }
-    }
 }

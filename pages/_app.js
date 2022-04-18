@@ -6,11 +6,15 @@ import Navbar from '../components/Navbar'
 import React, { useState, useEffect } from 'react'
 import SearchBar from '../components/SearchBar'
 import { useRouter } from 'next/router'
+import { placeholders } from '../utilities'
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
-  const currentPath = router.pathname.split("/")[1]; // returns "movies" "tv" "search" (or "" for /)
+  const currentPath = router.pathname.split("/")[1];
+  const localSearchPath = `${currentPath==="" || currentPath==="search" ? "" : "/"}${currentPath==="search" ? "" : currentPath}/search/`;
+  const searchPlaceholder = placeholders[currentPath];
+
 
   return (
     <>
@@ -19,14 +23,15 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <div className="main">
         <Navbar router={router} ></Navbar>
-          <div className="container">
-            {(currentPath==="" || currentPath==="tv" || currentPath==="movies") && <SearchBar router={router} path={currentPath} searchQuery={searchQuery} setSearchQuery={setSearchQuery}></SearchBar>}
-            <Component {...pageProps} router={router} searchQuery={searchQuery} setSearchQuery={setSearchQuery}></Component>
-          </div>
+        <div className="container">
+          {currentPath!=="404" && currentPath!=="details" && <SearchBar placeholder={searchPlaceholder} searchPath={localSearchPath} searchQuery={searchQuery} setSearchQuery={setSearchQuery} router={router}></SearchBar>}
+          <Component {...pageProps} router={router}></Component>
         </div>
+      </div>
     </>
   )
 
 }
+
 
 export default MyApp
