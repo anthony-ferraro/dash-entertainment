@@ -14,7 +14,7 @@ const CollectionItem = ({ contentItem, type, handleClick }) => {
             borderRadius: '10px',
           }}
         >
-          <Image layout="fill" objectFit="cover" src={`https://image.tmdb.org/t/p/${imageResolution}/${contentItem.image}`}></Image>
+          <Image layout="fill" objectFit="cover" src={`https://image.tmdb.org/t/p/${imageResolution}/${contentItem.image}`} style={{filter: "brightness(70%)"}}></Image>
 
         </div>
         <div className="content-info">
