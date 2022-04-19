@@ -179,6 +179,11 @@ li {
   list-style: none;
 }
 
+iframe {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
 path {
   pointer-events: all;
 }
