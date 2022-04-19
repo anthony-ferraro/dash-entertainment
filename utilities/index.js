@@ -46,10 +46,11 @@ export const parseContentItem = (contentItem) => {
         poster: contentItem.poster_path,
         rating: contentItem.vote_average,
         tagline: contentItem.tagline,
-        runtime: contentItem.runtime,
+        runtime: mediaType === "movie" ? contentItem.runtime : contentItem.episode_run_time[0],
         synopsis: contentItem.overview,
         language: contentItem.spoken_languages[0].name,
-        status: contentItem.status,
+        status:  contentItem.status,
+        seasons: mediaType === "tv" ? contentItem.number_of_seasons : null,
     };
 }
 
