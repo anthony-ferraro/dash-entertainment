@@ -12,8 +12,9 @@ export const fetcher = (url) => fetch(url).then(res => res.json())
 export const getURL = (path, optional = '', type = 'content') => {
     return `${type === "image" ? paths.images : paths.content}${path}${type === "content" && "?api_key="}${type === "content" && API_KEY}${optional}`
 }
-export const getIMG = (imgpath) => {
-    return `${paths.images}${imgpath}`
+export const getIMG = (imgpath, resolution="w500") => {
+    return `https://image.tmdb.org/t/p/${resolution}/${imgpath}`
+
 }
 export const parse = (contentList) => {
     return contentList.results.map(contentItem => {
@@ -47,17 +48,9 @@ export const parseContentItem = (contentItem) => {
         tagline: contentItem.tagline,
         runtime: contentItem.runtime,
         synopsis: contentItem.overview,
+        language: contentItem.spoken_languages[0].name,
+        status: contentItem.status,
     };
-}
-
- export const oxford = (arr, conjunction, ifempty) => {
-    let l = arr.length;
-    if (!l) return ifempty;
-    if (l<2) return arr[0];
-    if (l<3) return arr.join(` ${conjunction} `);
-    arr = arr.slice();
-    arr[l-1] = `${conjunction} ${arr[l-1]}`;
-    return arr.join(", ");
 }
 
 export const parseProviderData = (providerData, country = "US") => {

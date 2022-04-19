@@ -14,7 +14,7 @@ const _id_ = ({ router }) => {
     return f(urls);
   }
 
-  const paths = [`movie/${id}`, `movie/${id}/videos`, `movie/${id}/watch/providers`].map(path => getURL(path));
+  const paths = [`movie/${id}`, `movie/${id}/videos`, `movie/${id}/watch/providers`, `movie/${id}/credits`].map(path => getURL(path));
   const { data, error } = useSWR(paths, fetcher)
 
   if (error) {

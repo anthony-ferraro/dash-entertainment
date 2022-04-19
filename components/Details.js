@@ -5,8 +5,9 @@ const Details = ({ contentData, router }) => {
 
   // const contentItem = parse(contentData[0]);
   const contentItem = parseContentItem(contentData[0]);
-  const videoKey = "key" in contentData[1].results[0] ? contentData[1].results[0].key : null;
+  const videoKey = contentData[1] !== undefined && "results" in contentData[1] && contentData[1].results[0] !== undefined && "key" in contentData[1].results[0] ? contentData[1].results[0].key : null;
   const providerData = parseProviderData(contentData[2]);
+  const creditsData = contentData[3];
   const categories = Object.keys(providerData).filter(category => providerData[category].length !== 0)
 
   return (
@@ -15,25 +16,35 @@ const Details = ({ contentData, router }) => {
       <div>
         {/* <p className="c-white">{JSON.stringify(contentItem)}</p> */}
         <div className="poster-wrapper">
-          <Image src={getIMG(contentItem.poster)} layout="fill" objectFit="contain"></Image>
+          <Image src={getIMG(contentItem.poster, "w500")} layout="fill" objectFit="contain"></Image>
         </div>
         <div className="details-stats">
-          <p className="heading-L c-white">{contentItem.title}</p>
+          <p className="heading-XL c-white">{contentItem.title}</p>
           <p className="heading-M c-fadedgrey">{contentItem.tagline}</p>
           <br></br>
-          <p className="heading-M c-white">Rating: <span className="body-L c-fadedgrey">{contentItem.rating}/10</span></p>
+          <p className="heading-L c-white">{contentItem.rating / 2}/5</p>
           <br></br>
-          <p className="heading-M c-white">Runtime: <span className="body-L c-fadedgrey">{contentItem.runtime} minutes</span></p>
+          <div>
+            <div><p className="c-fadedgrey heading-XS">Length</p><p className="c-white heading-XS">{contentItem.runtime} min.</p></div>
+            <div><p className="c-fadedgrey heading-XS">Language</p><p className="c-white heading-XS">{contentItem.language}</p></div>
+            <div><p className="c-fadedgrey heading-XS">Year</p><p className="c-white heading-XS">{contentItem.year}</p></div>
+            <div><p className="c-fadedgrey heading-XS">Status</p><p className="c-white heading-XS">{contentItem.status}</p></div>
+
+          </div>
+          <p className="heading-XS c-white">Synopsis</p>
+          <p className="body-M c-white">{contentItem.synopsis}</p>
           <br></br>
-          <p className="heading-M c-white">Released: <span className="body-L c-fadedgrey">{contentItem.year}</span></p>
-          <br></br>
-          <p className="heading-M c-white">Synopsis:</p>
-          <p className="body-L c-fadedgrey">{contentItem.synopsis}</p>
-          <br></br>
+          <p className="heading-XS c-white">Top Cast</p>
+          <ul>
+            {creditsData.cast.slice(0,15).map(castMember => <li className="cast-member">{castMember.name}</li> )}
+          </ul>
         </div>
       </div>
       <div>
-        {!!videoKey && <iframe width="560" height="315" src={`https://www.youtube.com/embed/${videoKey}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>}
+        {!!videoKey ? <iframe width="560" height="315" src={`https://www.youtube.com/embed/${videoKey}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> :
+          <div className="video-placeholder">
+            <p className="heading-XL c-white">No Trailer Available</p>
+          </div>}
         <div className="providers-display">
           <p>{categories.length > 1 ? `${contentItem.title} is available to ${categories.slice(0, -1).join(', ') + ' and ' + categories.slice(-1)}!` : categories.length > 0 ? `${contentItem.title} is avaliable to ${categories[0]}!` : `We don't know where ${contentItem.title} is available to watch.`}</p>
           <ul className="provider-categories-list">
