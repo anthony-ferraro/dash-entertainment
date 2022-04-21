@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image';
 import { getIMG, parseContentItem, parseProviderData } from '../utilities';
-const Details = ({ contentData, router }) => {
+const MediaDetails = ({ contentData, router }) => {
 
   // const contentItem = parse(contentData[0]);
   const contentItem = parseContentItem(contentData[0]);
@@ -36,7 +36,7 @@ const Details = ({ contentData, router }) => {
           <br></br>
           <p className="heading-XS c-white">Top Cast</p>
           <ul>
-            {creditsData.cast.slice(0,15).map(castMember => <li className="cast-member">{castMember.name}</li> )}
+            {creditsData.cast.slice(0,15).map(castMember => <li onClick={() => router.push(`/details/person/${castMember.id}`)}className="cast-member">{castMember.name}</li> )}
           </ul>
         </div>
       </div>
@@ -70,4 +70,4 @@ const Details = ({ contentData, router }) => {
   )
 }
 
-export default Details
+export default MediaDetails

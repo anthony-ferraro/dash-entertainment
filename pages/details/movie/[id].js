@@ -1,7 +1,7 @@
 import React from 'react'
 import useSWR from 'swr'
 import { getURL } from '../../../utilities';
-import Details from '../../../components/Details';
+import MediaDetails from '../../../components/MediaDetails';
 import Loading from '../../../components/Loading';
 const _id_ = ({ router }) => {
   const { id } = router.query;
@@ -31,7 +31,7 @@ const _id_ = ({ router }) => {
   } else {
     return (
       <>
-        <Details contentData={data} router={router}></Details>
+        <MediaDetails contentData={data} router={router}></MediaDetails>
       </>
     )
   }
