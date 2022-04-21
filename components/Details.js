@@ -41,7 +41,7 @@ const Details = ({ contentData, router }) => {
         </div>
       </div>
       <div>
-        {!!videoKey ? <iframe width="560" height="315" src={`https://www.youtube.com/embed/${videoKey}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> :
+        {!!videoKey ? <div className="video-wrapper"><iframe src={`https://www.youtube.com/embed/${videoKey}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe></div> :
           <div className="video-placeholder">
             <p className="heading-XL c-white">No Trailer Available</p>
           </div>}

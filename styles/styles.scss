@@ -188,6 +188,7 @@
     border: 1px white solid;
     padding: 2px 5px;
     user-select: none;
+
     &:hover {
         cursor: pointer;
     }
@@ -213,6 +214,7 @@
     flex-basis: 200px;
     border-radius: 10px;
     user-select: none;
+
     &:hover {
         cursor: pointer;
     }
@@ -222,15 +224,18 @@
     width: 100%;
     padding: 20px;
     padding-top: 0px;
+
     p {
         padding: 5px;
         padding-left: 0px;
     }
 }
-.details > div{
+
+.details>div {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    flex-wrap: wrap;
     padding: 20px;
     padding-left: 0px;
     justify-content: flex-start;
@@ -239,12 +244,15 @@
 
 .details-stats {
     flex-grow: 0;
-    width: 70%;
-    max-width: 70%;
+    flex-shrink: 1;
+    width: 60%;
+    max-width: 60%;
     padding-left: 20px;
+
     >div {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         width: 80%;
         justify-content: space-between;
         align-items: center;
@@ -255,15 +263,22 @@
 .cast-member {
     display: inline-block;
     white-space: nowrap;
-    @extend .bg-white;
+    @extend .c-white;
+    user-select: none;
+    border: white 1px solid;
     border-radius: 5px;
     padding: 2px;
     margin-right: 5px;
     margin-bottom: 5px;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .poster-wrapper {
     width: 30%;
+    min-width: 300px;
     height: 500px;
     position: relative;
     flex-shrink: 0;
@@ -273,6 +288,8 @@
     display: flex;
     flex-direction: column;
     padding: 0px 25px;
+    max-width: 45%;
+
     >p {
         margin-bottom: 5px;
         @extend .c-white;
@@ -284,9 +301,11 @@
     @extend .c-white;
     @extend .heading-S;
 }
+
 .provider-category {
     @extend .heading-M;
     @extend .c-white;
+
     &:first-letter {
         text-transform: uppercase;
     }
@@ -303,14 +322,43 @@
 .provider {
     @extend .c-white;
     border-radius: 10px;
+    border: 1px white solid;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 5px;
+    width: 138px;
+    user-select: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+
     p {
         font-size: 14px;
     }
+}
+
+.video-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 560px;
+    height: 320px;
+    max-width: 90vw;
+    max-height: 50.725vw;
+    // padding-top: 56.25%;
+    // /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+}
+
+iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -318,16 +366,29 @@
     .content-list {
         gap: 30px;
     }
+
     .content-item {
         min-width: 220px;
     }
 
+    .details {
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 20px;
+    }
+}
+
+@media(max-width: 600px) {
+    .details {
+        padding-top: 30px;
+    }
 }
 
 @media(max-width: 800px) {
     .search-wrapper {
         margin-top: 20px;
     }
+
     .search-button {
         display: none;
     }
@@ -338,15 +399,18 @@
         margin-top: 10px;
         margin-bottom: 10px;
     }
+
     .wide-item {
         width: 240px;
         height: 100%;
-        background-size:auto;
+        background-size: auto;
+
         .content-info {
             >p:nth-of-type(1) {
                 font-size: 12px;
                 margin: 0;
             }
+
             >p:nth-of-type(2) {
                 font-size: 15px;
                 line-height: 20px;
@@ -359,6 +423,30 @@
     }
 
     .error_404 {
-        font-size: 30px;        
+        font-size: 30px;
     }
+
+    // .details>div {
+    //     flex-direction: column;
+    //     align-items: center;
+    // }
+
+    // .poster-wrapper {
+    //     min-width: 80%;
+    // }
+
+    // .details-stats {
+    //     width: 100%;
+    //     text-align: center;
+    //     align-items: center;
+
+    //     // >div {
+    //     //     flex-direction: column;
+    //     // }
+    // }
+
+    // iframe {
+    //     flex-shrink: 1;
+    // }
+
 }
