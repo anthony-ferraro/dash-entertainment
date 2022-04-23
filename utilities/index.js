@@ -12,12 +12,25 @@ export const fetcher = (url) => fetch(url).then(res => res.json())
 export const getURL = (path, optional = '', type = 'content') => {
     return `${type === "image" ? paths.images : paths.content}${path}${type === "content" && "?api_key="}${type === "content" && API_KEY}${optional}`
 }
-export const getIMG = (imgpath, resolution="w500") => {
+export const getIMG = (imgpath, resolution = "w500") => {
     return `https://image.tmdb.org/t/p/${resolution}/${imgpath}`
 
 }
 export const parse = (contentList) => {
-    return contentList.results.map(contentItem => {
+    return "results" in contentList ? contentList.results.map(contentItem => {
+        const mediaType = "title" in contentItem ? "movie" : "known_for" in contentItem ? "person" : "name" in contentItem ? "tv" : null
+        return {
+            category: mediaType,
+            id: contentItem.id,
+            title: mediaType === "movie" ? contentItem.title : mediaType === "tv" ? contentItem.name : mediaType === "person" ? contentItem.name : null,
+            year: "release_date" in contentItem ? contentItem.release_date.substring(0, 4) : "first_air_date" in contentItem ? contentItem.first_air_date.substring(0, 4) : "",
+            genres: contentItem.genre_ids,
+            image: ("profile_path" in contentItem && contentItem.profile_path !== null) ? contentItem.profile_path : ("backdrop_path" in contentItem && contentItem.backdrop_path !== null) ? contentItem.backdrop_path : ("poster_path" in contentItem && contentItem.poster_path !== null) ? contentItem.poster_path : null,
+            backdrop: mediaType === "movie" || mediaType === "tv" ? contentItem.backdrop_path : mediaType === "person" ? contentItem.profile_path : null,
+            poster: contentItem.poster_path,
+            rating: contentItem.vote_average,
+        };
+    }) : contentList.cast.map(contentItem => {
         const mediaType = "title" in contentItem ? "movie" : "known_for" in contentItem ? "person" : "name" in contentItem ? "tv" : null
         return {
             category: mediaType,
@@ -48,15 +61,15 @@ export const parseContentItem = (contentItem) => {
         tagline: contentItem.tagline,
         runtime: mediaType === "movie" ? contentItem.runtime : contentItem.episode_run_time[0],
         synopsis: contentItem.overview,
-        language: contentItem.spoken_languages[0].name,
-        status:  contentItem.status,
+        language: contentItem.spoken_languages[0]!==undefined ? contentItem.spoken_languages[0].name : null,
+        status: contentItem.status,
         seasons: mediaType === "tv" ? contentItem.number_of_seasons : null,
     };
 }
 
 export const parseProviderData = (providerData, country = "US") => {
     const minPriority = 15;
-    if (Object.keys(providerData).length!==0 && "results" in providerData && country in providerData.results) {
+    if (Object.keys(providerData).length !== 0 && "results" in providerData && country in providerData.results) {
         const results = providerData.results[country];
         const parseProvider = (provider) => { return { name: provider.provider_name, logo: provider.logo_path, priority: provider.display_priority } }
         return {

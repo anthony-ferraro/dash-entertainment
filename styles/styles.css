@@ -415,7 +415,7 @@
   padding-top: 0px;
 }
 
-.details p {
+.details-stats > p {
   padding: 5px;
   padding-left: 0px;
 }
@@ -635,6 +635,15 @@ iframe {
   }
   .error_404 {
     font-size: 30px;
+  }
+  .details-stats {
+    width: unset;
+    max-width: unset;
+  }
+  details > div {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
 }
 /*# sourceMappingURL=styles.css.map */

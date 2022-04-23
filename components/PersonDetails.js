@@ -1,7 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
 import { getIMG } from '../utilities';
-const PersonDetails = ({ personData, router }) => {
+import Collection from '../components/Collection'
+const PersonDetails = ({ personData, router, path, personID }) => {
     const personDetails = personData[0];
     const knownFor = personData[1];
     return (
@@ -15,17 +16,13 @@ const PersonDetails = ({ personData, router }) => {
                     <div className="details-stats">
                         <p className="heading-XL c-white">{personDetails.name}</p>
                         <p className="body-M c-white">{personDetails.biography}</p>
-                        {/* <div className="c-white">{JSON.stringify(knownFor.cast)}</div> */}
-                        <div className="known-for">
-                            <p className="heading-S c-white">Best Known For</p>
-                            <ul>
-                                {knownFor.cast.slice(0, 5).map(knownForItem => <li onClick={() => router.push(`/details/${knownForItem.media_type}/${knownForItem.id}`)}className="cast-member">{knownForItem.title}</li>)}
-                            </ul>
-                        </div>
                     </div>
                 </div>
+                <div className="known-for">
+                    <Collection label="Best Known For" type="normal" path={`person/${personID}/combined_credits`} router={router}></Collection>
+                </div>
             </div>
-            
+
         </>
     )
 }

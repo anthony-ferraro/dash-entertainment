@@ -31,7 +31,7 @@ const _id_ = ({ router }) => {
     } else {
         return (
             <>
-                <PersonDetails personData={data} router={router}></PersonDetails>
+                <PersonDetails personData={data} router={router} path={paths[1]} personID={id}></PersonDetails>
             </>
         )
     }
