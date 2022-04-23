@@ -41,9 +41,9 @@ const MediaDetails = ({ contentData, router }) => {
         </div>
       </div>
       <div>
-        {!!videoKey ? <div className="video-wrapper"><iframe src={`https://www.youtube.com/embed/${videoKey}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe></div> :
+        {!!videoKey ? <iframe src={`https://www.youtube.com/embed/${videoKey}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> :
           <div className="video-placeholder">
-            <p className="heading-XL c-white">No Trailer Available</p>
+            <p className="heading-XL c-white">No Video Available</p>
           </div>}
         <div className="providers-display">
           <p>{categories.length > 1 ? `${contentItem.title} is available to ${categories.slice(0, -1).join(', ') + ' and ' + categories.slice(-1)}!` : categories.length > 0 ? `${contentItem.title} is avaliable to ${categories[0]}!` : `We don't know where ${contentItem.title} is available to watch.`}</p>

@@ -68,7 +68,7 @@ export const parseContentItem = (contentItem) => {
 }
 
 export const parseProviderData = (providerData, country = "US") => {
-    const minPriority = 15;
+    const minPriority = 30;
     if (Object.keys(providerData).length !== 0 && "results" in providerData && country in providerData.results) {
         const results = providerData.results[country];
         const parseProvider = (provider) => { return { name: provider.provider_name, logo: provider.logo_path, priority: provider.display_priority } }

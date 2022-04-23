@@ -63,7 +63,7 @@
         margin: 0px;
         padding: 0px;
         margin-top: 20px;
-        width: 100%;
+        width: calc(100% - 50px);
         height: 72px;
         flex-direction: row;
         justify-content: space-around;
@@ -84,6 +84,7 @@
 @media(max-width: 600px) {
     .navbar {
         height: 56px;
+        width: 100%;
         border-radius: 0px;
     }
 }
