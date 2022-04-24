@@ -3,7 +3,9 @@ import useSWR from 'swr'
 import { getURL } from '../../../utilities';
 import MediaDetails from '../../../components/MediaDetails';
 import Loading from '../../../components/Loading';
+import Head from 'next/head';
 const _id_ = ({ router }) => {
+  const [title, setTitle] = React.useState('');
   const { id } = router.query;
   function fetcher(...urls) {
     const f = (u) => fetch(u).then((r) => r.json());
@@ -31,7 +33,10 @@ const _id_ = ({ router }) => {
   } else {
     return (
       <>
-        <MediaDetails contentData={data} router={router}></MediaDetails>
+        <Head>
+          <title>{title}</title>
+        </Head>
+        <MediaDetails contentData={data} router={router} setTitle={setTitle}></MediaDetails>
       </>
     )
   }

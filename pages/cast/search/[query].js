@@ -1,6 +1,7 @@
 import React from 'react'
 import { paths } from '../../../utilities';
 import Collection from '../../../components/Collection';
+import Head from 'next/head';
 const _id_ = ({ router }) => {
     const { query, page } = router.query;
     const optional = `&query=${query}&page=${page}`;
@@ -8,7 +9,9 @@ const _id_ = ({ router }) => {
     const path = paths.search[currentPath]
     return (
         <>
-            {/* <p className="c-white">{JSON.stringify(currentPa)}</p> */}
+            <Head>
+                <title>{`${query} - Search People`}</title>
+            </Head>
             <Collection router={router} label={`Results for "${query}"`} path={path} optional={optional} pagination={true}></Collection>
         </>
     )

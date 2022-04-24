@@ -2,9 +2,10 @@ import React from 'react'
 import Image from 'next/image'
 import { getIMG } from '../utilities';
 import Collection from '../components/Collection'
-const PersonDetails = ({ personData, router, path, personID }) => {
+const PersonDetails = ({ personData, router, path, personID, setTitle }) => {
     const personDetails = personData[0];
     const knownFor = personData[1];
+    setTitle(`${personDetails.name}`);
     return (
         <>
             <div className="details">

@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image';
 import { getIMG, parseContentItem, parseProviderData } from '../utilities';
-const MediaDetails = ({ contentData, router }) => {
+const MediaDetails = ({ contentData, router, setTitle }) => {
 
   // const contentItem = parse(contentData[0]);
   const contentItem = parseContentItem(contentData[0]);
@@ -9,7 +9,7 @@ const MediaDetails = ({ contentData, router }) => {
   const providerData = parseProviderData(contentData[2]);
   const creditsData = contentData[3];
   const categories = Object.keys(providerData).filter(category => providerData[category].length !== 0)
-
+  setTitle(`${contentItem.title} (${contentItem.year})`);
   return (
     <div className="details">
       <button className="button back-button" onClick={() => router.back()}>Go Back</button>

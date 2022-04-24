@@ -3,8 +3,10 @@ import useSWR from 'swr'
 import { getURL } from '../../../utilities';
 import PersonDetails from '../../../components/PersonDetails';
 import Loading from '../../../components/Loading';
+import Head from 'next/head';
 
 const _id_ = ({ router }) => {
+    const [title, setTitle] = React.useState('');
     const { id } = router.query;
     function fetcher(...urls) {
         const f = (u) => fetch(u).then((r) => r.json());
@@ -31,7 +33,10 @@ const _id_ = ({ router }) => {
     } else {
         return (
             <>
-                <PersonDetails personData={data} router={router} path={paths[1]} personID={id}></PersonDetails>
+                <Head>
+                    <title>{title}</title>
+                </Head>
+                <PersonDetails personData={data} router={router} path={paths[1]} personID={id} setTitle={setTitle}></PersonDetails>
             </>
         )
     }
