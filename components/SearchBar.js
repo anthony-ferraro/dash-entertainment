@@ -4,7 +4,7 @@ const SearchBar = ({ router, searchPath, placeholder, searchQuery, setSearchQuer
     //searchpath includes a trailing slash
     const handleSearch = () => {
         if (searchQuery !== "") {
-            router.push(`${searchPath}${searchQuery}`);
+            router.push(`${searchPath}${searchQuery}?page=1`);
         }
     }
     return (

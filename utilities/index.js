@@ -107,7 +107,7 @@ export const paths = {
     search: {
         movies: "search/movie",
         tv: "search/tv",
-        people: "search/person",
+        cast: "search/person",
         multi: "search/multi",
     },
     discover: {

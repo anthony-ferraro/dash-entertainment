@@ -2,8 +2,9 @@ import React from 'react'
 import useSWR from 'swr'
 import { fetcher, getURL, parse } from '../utilities'
 import CollectionItem from './CollectionItem'
+import Paginator from './Paginator'
 import Loading from './Loading'
-const Collection = ({ type = "normal", displayCount, path, optional = "", label, router, morePath = "" }) => {
+const Collection = ({ type = "normal", displayCount, path, optional = "", label, router, morePath = "", pagination = false }) => {
     const { data, error } = useSWR(getURL(path, optional), fetcher)
     const handleClick = (contentItem) => {
         router.push(`/details/${contentItem.category.toLowerCase()}/${contentItem.id}`)
@@ -35,6 +36,7 @@ const Collection = ({ type = "normal", displayCount, path, optional = "", label,
                         <CollectionItem key={index} contentItem={contentItem} type={type} handleClick={handleClick}></CollectionItem>
                     )}
                 </div>
+                {pagination && <Paginator numPages={data.total_pages} router={router}></Paginator>}
             </>
         )
     }
