@@ -25,7 +25,7 @@ const MediaDetails = ({ contentData, router, setTitle }) => {
           <p className="heading-L c-white">{contentItem.rating / 2}/5</p>
           <br></br>
           <div>
-            <div><p className="c-fadedgrey heading-XS">{contentItem.category === "movie" ? "Length" : "Seasons"}</p><p className="c-white heading-XS">{contentItem.category === "movie" ? contentItem.runtime : contentItem.seasons}</p></div>
+            <div><p className="c-fadedgrey heading-XS">{contentItem.category === "movie" ? "Length" : "Seasons"}</p><p className="c-white heading-XS">{contentItem.category === "movie" ? contentItem.runtime : contentItem.seasons}{contentItem.category==="movie" && " min."}</p></div>
             <div><p className="c-fadedgrey heading-XS">Language</p><p className="c-white heading-XS">{contentItem.language}</p></div>
             <div><p className="c-fadedgrey heading-XS">Year</p><p className="c-white heading-XS">{contentItem.year}</p></div>
             <div><p className="c-fadedgrey heading-XS">Status</p><p className="c-white heading-XS">{contentItem.status}</p></div>

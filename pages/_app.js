@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }) {
         <title>Dash Entertainment</title>
       </Head>
       <div className="main">
-        <NextNProgress height={6} color="#FC4747"></NextNProgress>
+        <NextNProgress height={6} color="#FC4747" options={{ showSpinner: false }}></NextNProgress>
         <Navbar router={router} ></Navbar>
         <div className="container">
           {currentPath !== "404" && currentPath !== "details" && <SearchBar placeholder={searchPlaceholder} searchPath={localSearchPath} searchQuery={searchQuery} setSearchQuery={setSearchQuery} router={router}></SearchBar>}
