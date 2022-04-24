@@ -4,6 +4,8 @@ Dash Entertainment is the best website to find information on the latest Movies,
 
 Live Site URL: [Dash Entertainmnt](https://dash-entertainment.vercel.app)
 
+![screenshot](/screenshot.PNG)
+
 ### Features
 - Full stack web application
 - Responsive design
