@@ -8,6 +8,7 @@ import SearchBar from '../components/SearchBar'
 import Footer from '../components/Footer'
 import { useRouter } from 'next/router'
 import { placeholders } from '../utilities'
+import NextNProgress from "nextjs-progressbar";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -23,6 +24,7 @@ function MyApp({ Component, pageProps }) {
         <title>Dash Entertainment</title>
       </Head>
       <div className="main">
+        <NextNProgress height={6} color="#FC4747"></NextNProgress>
         <Navbar router={router} ></Navbar>
         <div className="container">
           {currentPath !== "404" && currentPath !== "details" && <SearchBar placeholder={searchPlaceholder} searchPath={localSearchPath} searchQuery={searchQuery} setSearchQuery={setSearchQuery} router={router}></SearchBar>}
