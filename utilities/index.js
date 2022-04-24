@@ -140,6 +140,7 @@ export const paths = {
 
 export const placeholders = {
     search: "Search for Movies, TV Series, and Cast Members",
+    trending: "Search for Movies, TV Series, and Cast Members",
     "": "Search for Movies, TV Series, and Cast Members",
     movies: "Search for Movies",
     tv: "Search for TV Series",

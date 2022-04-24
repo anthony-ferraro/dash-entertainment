@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const currentPath = router.pathname.split("/")[1];
-  const localSearchPath = `${currentPath === "" || currentPath === "search" ? "" : "/"}${currentPath === "search" ? "" : currentPath}/search/`;
+  const localSearchPath = `${currentPath === "" || currentPath === "search" ? "" : "/"}${currentPath === "search" || currentPath === "trending" ? "" : currentPath}/search/`;
   const searchPlaceholder = placeholders[currentPath];
 
 
@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }) {
         <div className="container">
           {currentPath !== "404" && currentPath !== "details" && <SearchBar placeholder={searchPlaceholder} searchPath={localSearchPath} searchQuery={searchQuery} setSearchQuery={setSearchQuery} router={router}></SearchBar>}
           <Component {...pageProps} router={router}></Component>
-          <Footer router={router}></Footer>
+          {currentPath !== "404" && <Footer router={router}></Footer>}
         </div>
       </div>
     </>
