@@ -46,7 +46,7 @@ const MediaDetails = ({ contentData, router, setTitle }) => {
             <p className="heading-XL c-white">No Video Available</p>
           </div>}
         <div className="providers-display">
-          <p>{categories.length > 1 ? `${contentItem.title} is available to ${categories.slice(0, -1).join(', ') + ' and ' + categories.slice(-1)}!` : categories.length > 0 ? `${contentItem.title} is avaliable to ${categories[0]}!` : `We don't know where ${contentItem.title} is available to watch.`}</p>
+          <p>{categories.length > 1 ? `${contentItem.title} is available to ${categories.slice(0, -1).map(category => category==="ads" ? "watch with ads" : category==="free" ? "watch for free" : category).join(', ') + ' and ' + categories.slice(-1)}!` : categories.length > 0 ? `${contentItem.title} is avaliable to ${categories[0]}!` : `We don't know where ${contentItem.title} is available to watch.`}</p>
           <ul className="provider-categories-list">
             {!!categories && categories.map((category, index) =>
               <>

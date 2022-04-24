@@ -13,7 +13,7 @@ const Paginator = ({ numPages, router }) => {
                 })
                 break
             case "next":
-                router.query.page <= numPages && router.push({
+                router.query.page < numPages && router.push({
                     ...router,
                     query: {
                         ...router.query,
