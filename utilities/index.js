@@ -68,25 +68,25 @@ export const parseContentItem = (contentItem) => {
 }
 
 export const parseProviderData = (providerData, country = "US") => {
-    const minPriority = 50;
+    const maxPriority = 50;
     if (Object.keys(providerData).length !== 0 && "results" in providerData && country in providerData.results) {
         const results = providerData.results[country];
         const parseProvider = (provider) => { return { name: provider.provider_name, logo: provider.logo_path, priority: provider.display_priority } }
         return {
             free: "free" in results ? results.free
-                .filter(provider => provider.display_priority <= minPriority)
+                .filter(provider => provider.display_priority <= maxPriority)
                 .map(provider => parseProvider(provider)) : [],
             stream: "flatrate" in results ? results.flatrate
-                .filter(provider => provider.display_priority <= minPriority)
+                .filter(provider => provider.display_priority <= maxPriority)
                 .map(provider => parseProvider(provider)) : [],
             ads: "ads" in results ? results.ads
-                .filter(provider => provider.display_priority <= minPriority)
+                .filter(provider => provider.display_priority <= maxPriority)
                 .map(provider => parseProvider(provider)) : [],
             rent: "rent" in results ? results.rent
-                .filter(provider => provider.display_priority <= minPriority)
+                .filter(provider => provider.display_priority <= maxPriority)
                 .map(provider => parseProvider(provider)) : [],
             buy: "buy" in results ? results.buy
-                .filter(provider => provider.display_priority <= minPriority)
+                .filter(provider => provider.display_priority <= maxPriority)
                 .map(provider => parseProvider(provider)) : [],
         };
     } else {
