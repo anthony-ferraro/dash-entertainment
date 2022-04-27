@@ -6,7 +6,7 @@ import { getFirestore } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { collection, getDoc, doc, setDoc } from 'firebase/firestore';
 
-const profile = ({ app }) => {
+const Profile = ({ app }) => {
     const auth = getAuth(app);
     const db = getFirestore(app);
 
@@ -64,4 +64,4 @@ const profile = ({ app }) => {
 
 }
 
-export default profile
+export default Profile
