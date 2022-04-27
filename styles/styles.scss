@@ -61,12 +61,6 @@
         height: 230px;
     }
 
-    .bookmark {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-    }
-
     &:hover {
         cursor: pointer;
     }
@@ -85,6 +79,28 @@
             @extend .c-white;
             @extend .heading-S;
         }
+    }
+}
+
+.bookmark {
+    @extend .c-white;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color:rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border: none;
+    font-size: 18px;
+    &:hover {
+        background-color: white;
+        @extend .c-darkblue;
+        cursor: pointer;
     }
 }
 
@@ -386,6 +402,7 @@ iframe {
     align-self: center;
     display: flex;
     align-items: center;
+
     p {
         @extend .bg-white;
         @extend .c-darkblue;
@@ -399,6 +416,7 @@ iframe {
         padding: 0px 5px;
         user-select: none;
     }
+
     a {
         width: 100px;
         display: flex;
@@ -414,16 +432,19 @@ iframe {
         @extend .c-white;
         transition: color 0.1s linear, background-color 0.1s linear;
         user-select: none;
+
         &:hover {
             cursor: pointer;
             @extend .bg-white;
             @extend .c-darkblue;
         }
+
         &:nth-of-type(1) {
             border-right: 0px;
             border-top-right-radius: 0px;
             border-bottom-right-radius: 0px;
         }
+
         &:nth-of-type(2) {
             border-left: 0px;
             border-top-left-radius: 0px;
@@ -439,6 +460,7 @@ iframe {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     p {
         background-image: linear-gradient(90deg, #D3A615, #0DB5DF);
         background-clip: text;
@@ -446,18 +468,107 @@ iframe {
         margin-bottom: 5px;
         user-select: none;
     }
+
     div {
         display: inline-block;
     }
 }
+
 .logo-wrapper {
     width: 150px;
     height: 50px;
     position: relative;
+
     &:hover {
         cursor: pointer;
     }
 }
+
+.logo {
+    position: relative;
+    width: 35px;
+    height: 35px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.signin-wrapper {
+    padding: 40px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.signin {
+    width: 400px;
+    height: 420px;
+    padding: 35px 30px;
+    @extend .bg-semidarkblue;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 5px;
+
+    &>p {
+        margin-bottom: 10px;
+    }
+}
+
+.signin-button {
+    width: 90%;
+    height: 40px;
+    border-radius: 0px;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    align-self: center;
+    border-radius: 5px;
+    // box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+    @extend .body-M;
+
+    >.logo-wrapper {
+        display: inline;
+        width: 18px;
+        height: 18px;
+        margin: 0px 10px;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.google {
+    background-color: white;
+    color: black;
+}
+
+.facebook {
+    background-color: #3B5998;
+    color: white;
+}
+
+.twitter {
+    background-color: #55ACEE;
+    color: white;
+}
+
+.email {
+    background-color: #FC4747;
+    color: white;
+}
+
+
+
 
 
 @media(max-width: 1300px) {

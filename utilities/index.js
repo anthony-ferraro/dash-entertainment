@@ -1,14 +1,7 @@
 export const HOST = (process.env.NODE_ENV !== 'production') ? 'http://localhost:3000' : 'https://dash-entertainment.vercel.app'
 export const API_KEY = "3ab8cbaaf33601b17a319fdcd7af44f3";
 export const fetcher = (url) => fetch(url).then(res => res.json())
-// export default function fetcher(...urls) {
-//     const f = (u) => fetch(u).then((r) => r.json());
 
-//     if (urls.length > 1) {
-//         return Promise.all(urls.map(f));
-//     }
-//     return f(urls);
-// }
 export const getURL = (path, optional = '', type = 'content') => {
     return `${type === "image" ? paths.images : paths.content}${path}${type === "content" && "?api_key="}${type === "content" && API_KEY}${optional}`
 }
