@@ -2,7 +2,7 @@ import React from 'react'
 import { paths } from '../../../utilities'
 import Collection from '../../../components/Collection'
 import Head from 'next/head'
-const _id_ = ({ router }) => {
+const _id_ = ({ router, app, userData }) => {
     const { id, name, page = 1 } = router.query;
     const optional = `&with_genres=${id}&page=${page}`;
     const currentPath = router.pathname.split("/")[1]; // returns "movies" "tv" "search" (or "" for /)
@@ -12,7 +12,7 @@ const _id_ = ({ router }) => {
             <Head>
                 <title>{`${name} TV Series`}</title>
             </Head>
-            <Collection router={router} label={name} path={path} optional={optional} pagination={true}></Collection>
+            <Collection router={router} label={name} path={path} optional={optional} pagination={true} app={app} userData={userData}></Collection>
         </>
     )
 }
