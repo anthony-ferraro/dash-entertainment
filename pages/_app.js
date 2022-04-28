@@ -12,7 +12,7 @@ import NextNProgress from "nextjs-progressbar";
 import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { getFirestore, doc, setDoc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+import { getFirestore, doc, onSnapshot, setDoc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 
 function MyApp({ Component, pageProps }) {
@@ -37,7 +37,8 @@ function MyApp({ Component, pageProps }) {
   const auth = getAuth(app);
   const [user] = useAuthState(auth);
   const db = getFirestore(app);
-  const [userData, userDataLoading] = useDocumentData(doc(db, "users", user !== null ? user.uid : "dummy"));
+
+  const [userData] = useDocumentData(doc(db, "users", user !== null ? user.uid : "dummy"));
 
   return (
     <>
