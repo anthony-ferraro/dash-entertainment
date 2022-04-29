@@ -10,33 +10,24 @@ export const getIMG = (imgpath, resolution = "w500") => {
 
 }
 export const parse = (contentList) => {
-    return "results" in contentList ? contentList.results.map(contentItem => {
-        const mediaType = "title" in contentItem ? "movie" : "known_for" in contentItem ? "person" : "name" in contentItem ? "tv" : null
+    const mapped = (contentItem) => {
+        const mediaType = "title" in contentItem ? "movie" : ("known_for" in contentItem || "biography" in contentItem) ? "person" : "name" in contentItem ? "tv" : null
         return {
             category: mediaType,
             id: contentItem.id,
             title: mediaType === "movie" ? contentItem.title : mediaType === "tv" ? contentItem.name : mediaType === "person" ? contentItem.name : null,
-            year: "release_date" in contentItem ? contentItem.release_date.substring(0, 4) : "first_air_date" in contentItem ? contentItem.first_air_date.substring(0, 4) : "",
+            year: "release_date" in contentItem ? contentItem.release_date.substring(0, 4) : ("first_air_date" in contentItem && contentItem.first_air_date !== null) ? contentItem.first_air_date.substring(0, 4) : null,
             genres: contentItem.genre_ids,
             image: ("profile_path" in contentItem && contentItem.profile_path !== null) ? contentItem.profile_path : ("backdrop_path" in contentItem && contentItem.backdrop_path !== null) ? contentItem.backdrop_path : ("poster_path" in contentItem && contentItem.poster_path !== null) ? contentItem.poster_path : null,
             backdrop: mediaType === "movie" || mediaType === "tv" ? contentItem.backdrop_path : mediaType === "person" ? contentItem.profile_path : null,
             poster: contentItem.poster_path,
             rating: contentItem.vote_average,
         };
-    }) : contentList.cast.map(contentItem => {
-        const mediaType = "title" in contentItem ? "movie" : "known_for" in contentItem ? "person" : "name" in contentItem ? "tv" : null
-        return {
-            category: mediaType,
-            id: contentItem.id,
-            title: mediaType === "movie" ? contentItem.title : mediaType === "tv" ? contentItem.name : mediaType === "person" ? contentItem.name : null,
-            year: "release_date" in contentItem ? contentItem.release_date.substring(0, 4) : "first_air_date" in contentItem ? contentItem.first_air_date.substring(0, 4) : "",
-            genres: contentItem.genre_ids,
-            image: ("profile_path" in contentItem && contentItem.profile_path !== null) ? contentItem.profile_path : ("backdrop_path" in contentItem && contentItem.backdrop_path !== null) ? contentItem.backdrop_path : ("poster_path" in contentItem && contentItem.poster_path !== null) ? contentItem.poster_path : null,
-            backdrop: mediaType === "movie" || mediaType === "tv" ? contentItem.backdrop_path : mediaType === "person" ? contentItem.profile_path : null,
-            poster: contentItem.poster_path,
-            rating: contentItem.vote_average,
-        };
-    });
+    }
+    return "results" in contentList ? contentList.results.map(contentItem => mapped(contentItem))
+        : "cast" in contentList ? contentList.cast.map(contentItem => mapped(contentItem))
+            : Array.isArray(contentList) ? contentList.map(contentItem => mapped(contentItem))
+                : [mapped(contentList)];
 }
 
 export const parseContentItem = (contentItem) => {
@@ -52,9 +43,9 @@ export const parseContentItem = (contentItem) => {
         poster: contentItem.poster_path,
         rating: contentItem.vote_average,
         tagline: contentItem.tagline,
-        runtime: mediaType === "movie" ? contentItem.runtime : contentItem.episode_run_time[0],
+        runtime: mediaType === "movie" ? ("runtime" in contentItem ? contentItem.runtime : null) : mediaType==="tv" ? ("episode_run_time" in contentItem ? contentItem.episode_run_time[0] : null) : null ,
         synopsis: contentItem.overview,
-        language: contentItem.spoken_languages[0]!==undefined ? contentItem.spoken_languages[0].name : null,
+        language: "spoken_languages" in contentItem && contentItem.spoken_languages[0] !== undefined ? contentItem.spoken_languages[0].name : null,
         status: contentItem.status,
         seasons: mediaType === "tv" ? contentItem.number_of_seasons : null,
     };

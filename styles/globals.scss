@@ -9,6 +9,26 @@
     --fadedgrey: #87898E;
 }
 
+::-webkit-scrollbar {
+    background: #10141E;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #6E7075;
+}
+
+// ::-webkit-scrollbar {
+//     height: 12px;
+//     width: 12px;
+//     background: #aaa;
+// }
+
+// ::-webkit-scrollbar-thumb {
+//     background: #393812;
+//     -webkit-border-radius: 1ex;
+//     -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+// }
+
 html,
 body,
 body>div:first-child,
@@ -59,12 +79,14 @@ path {
     display: flex;
     flex-direction: row;
     padding-top: 30px;
+    padding-bottom: 0px;
     height: 100%;
+    overflow-x:hidden;
 }
 
 .container {
-    margin-left: 160px;
     padding-right: 30px;
+    padding-bottom: 30px;
     width: calc(100% - 160px);
     height: 100%;
     overflow: scroll;
@@ -72,14 +94,14 @@ path {
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+    overflow-x:hidden;
 }
 
 @media(max-width: 1300px) {
     .main {
-        // padding-left: 15px;
-        // padding-top: 15px;
         padding: 0px 25px;
-        padding-bottom: 100px;
+        flex-direction: column;
+        padding-bottom: 0px;
     }
 
     .container {
@@ -88,7 +110,6 @@ path {
         margin-left: 0px;
         padding-left: 0px;
         padding-right: 0px;
-        margin-top: calc(72px + 15px);
         padding-bottom: 20px;
     }
     
@@ -96,13 +117,11 @@ path {
 
 @media(max-width: 600px) {
     .main {
-        padding: 0px;
+        padding: 0px 15px;
         margin: 0px;
     }
     .container {
-        padding: 15px;
+        // padding: 15px;
         padding-top: 0px;
-        margin-top: 56px;
-        // padding-top: 56px;
     }
 }

@@ -3,7 +3,7 @@ import '../styles/utilities.css'
 import '../styles/styles.css'
 import Head from 'next/head'
 import Navbar from '../components/Navbar'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import SearchBar from '../components/SearchBar'
 import Footer from '../components/Footer'
 import { useRouter } from 'next/router'
@@ -12,7 +12,7 @@ import NextNProgress from "nextjs-progressbar";
 import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { getFirestore, doc, onSnapshot, setDoc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+import { getFirestore, doc, onSnapshot, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 
 function MyApp({ Component, pageProps }) {
@@ -38,7 +38,36 @@ function MyApp({ Component, pageProps }) {
   const [user] = useAuthState(auth);
   const db = getFirestore(app);
 
-  const [userData] = useDocumentData(doc(db, "users", user !== null ? user.uid : "dummy"));
+  useEffect(() => {
+    // when the auth state changes to logged in, check if the user exists in the database
+    // if it does not exist then create it
+    if (user) {
+      const checkCreateUser = async () => {
+        const docRef = doc(db, "users", user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          // do nothing
+          console.log("Welcome Back!")
+        } else {
+          // create a new user in the database
+          console.log("Welcome!")
+          const newUser = {
+            uid: user.uid,
+            displayName: user.displayName,
+            email: user.email,
+            photoURL: user.photoURL,
+            bookmarked_movie: [],
+            bookmarked_tv: [],
+            bookmarked_person: [],
+          };
+          await setDoc(docRef, newUser);
+        }
+      }
+      checkCreateUser();
+    }
+  }, [user]);
+
+  const [userData, userDataLoading] = useDocumentData(doc(db, "users", user !== null ? user.uid : "dummy"));
 
   return (
     <>
@@ -50,9 +79,8 @@ function MyApp({ Component, pageProps }) {
         <Navbar router={router} ></Navbar>
         <div className="container">
           {currentPath !== "404" && currentPath !== "details" && currentPath !== "user" && <SearchBar placeholder={searchPlaceholder} searchPath={localSearchPath} searchQuery={searchQuery} setSearchQuery={setSearchQuery} router={router}></SearchBar>}
-          <Component {...pageProps} router={router} app={app} userData={userData}></Component>
+          <Component {...pageProps} router={router} app={app} userData={userData} userDataLoading={userDataLoading}></Component>
           {currentPath !== "404" && currentPath !== "user" && <Footer router={router}></Footer>}
-          <p className="c-white">{JSON.stringify(userData)}</p>
         </div>
       </div>
     </>

@@ -501,17 +501,12 @@ iframe {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    flex-shrink: 0;
-    gap: 20px;
-    >.logo {
-        flex-shrink: 0;
-    }
 }
 
 .signin {
-    width: 400px;
+    max-width: 400px;
     height: 420px;
-    max-height: 90%;
+    // max-height: 90%;
     padding: 35px 30px;
     @extend .bg-semidarkblue;
     border-radius: 20px;

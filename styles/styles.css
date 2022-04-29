@@ -790,20 +790,11 @@ iframe {
           align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
-  gap: 20px;
-}
-
-.signin-wrapper > .logo {
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
 }
 
 .signin {
-  width: 400px;
+  max-width: 400px;
   height: 420px;
-  max-height: 90%;
   padding: 35px 30px;
   border-radius: 20px;
   display: -webkit-box;

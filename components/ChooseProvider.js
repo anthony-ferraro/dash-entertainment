@@ -14,9 +14,6 @@ const ChooseProvider = ({ auth }) => {
     return (
         <>
             <div className="signin-wrapper">
-                {/* <div className="logo">
-                    <Image src="/assets/dash-logo.png" layout="fill" object-fit="contain"></Image>
-                </div> */}
                 <div className="signin">
                     <p className="heading-L c-white">Sign In</p>
                     <p className="body-M c-fadedgrey">Sign in to save your favorite Movies and TV Series!</p>
