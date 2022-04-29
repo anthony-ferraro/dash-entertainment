@@ -14,7 +14,7 @@ export const parse = (contentList) => {
         const mediaType = "title" in contentItem ? "movie" : ("known_for" in contentItem || "biography" in contentItem) ? "person" : "name" in contentItem ? "tv" : null
         return {
             category: mediaType,
-            id: contentItem.id,
+            id: "id" in contentItem ?contentItem.id : null,
             title: mediaType === "movie" ? contentItem.title : mediaType === "tv" ? contentItem.name : mediaType === "person" ? contentItem.name : null,
             year: "release_date" in contentItem ? contentItem.release_date.substring(0, 4) : ("first_air_date" in contentItem && contentItem.first_air_date !== null) ? contentItem.first_air_date.substring(0, 4) : null,
             genres: contentItem.genre_ids,
@@ -43,7 +43,7 @@ export const parseContentItem = (contentItem) => {
         poster: contentItem.poster_path,
         rating: contentItem.vote_average,
         tagline: contentItem.tagline,
-        runtime: mediaType === "movie" ? ("runtime" in contentItem ? contentItem.runtime : null) : mediaType==="tv" ? ("episode_run_time" in contentItem ? contentItem.episode_run_time[0] : null) : null ,
+        runtime: mediaType === "movie" ? ("runtime" in contentItem ? contentItem.runtime : null) : mediaType === "tv" ? ("episode_run_time" in contentItem ? contentItem.episode_run_time[0] : null) : null,
         synopsis: contentItem.overview,
         language: "spoken_languages" in contentItem && contentItem.spoken_languages[0] !== undefined ? contentItem.spoken_languages[0].name : null,
         status: contentItem.status,
@@ -130,3 +130,23 @@ export const placeholders = {
     tv: "Search for TV Series",
     cast: "Search for People",
 }
+
+export const shimmer = (w, h) => `
+<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="g">
+      <stop stop-color="#333" offset="20%" />
+      <stop stop-color="#222" offset="50%" />
+      <stop stop-color="#333" offset="70%" />
+    </linearGradient>
+  </defs>
+  <rect width="${w}" height="${h}" fill="#333" />
+  <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
+  <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
+</svg>
+`
+
+export const toBase64 = str =>
+    typeof window === 'undefined'
+        ? Buffer.from(str).toString('base64')
+        : window.btoa(str)

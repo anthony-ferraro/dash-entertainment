@@ -3,6 +3,8 @@ import Image from 'next/image'
 import { getIMG } from '../utilities';
 import Collection from '../components/Collection'
 import styles from '../styles/PersonDetails.module.css';
+import { shimmer, toBase64 } from '../utilities';
+
 const PersonDetails = ({ personData, router, path, personID, setTitle }) => {
     const personDetails = personData[0];
     const knownFor = personData[1];
@@ -13,7 +15,7 @@ const PersonDetails = ({ personData, router, path, personID, setTitle }) => {
                 <button className="button back-button" onClick={() => router.back()}>Go Back</button>
                 <div>
                     <div className={`${styles.posterWrapper}`}>
-                        <Image src={getIMG(personDetails.profile_path, "w500")} layout="fill" objectFit="contain"></Image>
+                        <Image placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(240, 140))}`} src={getIMG(personDetails.profile_path, "w500")} layout="fill" objectFit="contain"></Image>
                     </div>
                     <div className={`${styles.detailsStats}`}>
                         <p className="heading-XL c-white">{personDetails.name}</p>

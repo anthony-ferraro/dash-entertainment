@@ -51,10 +51,8 @@ function MyApp({ Component, pageProps }) {
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           // do nothing
-          console.log("Welcome Back!")
         } else {
           // create a new user in the database
-          console.log("Welcome!")
           const newUser = {
             uid: user.uid,
             displayName: user.displayName,

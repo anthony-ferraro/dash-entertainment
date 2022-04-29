@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image';
 import styles from '../styles/MediaDetails.module.css'
+import { shimmer, toBase64 } from '../utilities';
 import { getIMG, parseContentItem, parseProviderData } from '../utilities';
 const MediaDetails = ({ contentData, router, setTitle }) => {
 
@@ -16,7 +17,7 @@ const MediaDetails = ({ contentData, router, setTitle }) => {
       <button className={`button back-button`} onClick={() => router.back()}>Go Back</button>
       <div>
         <div className={`${styles.posterWrapper}`}>
-          <Image src={getIMG(contentItem.poster, "w500")} layout="fill" objectFit="contain"></Image>
+          <Image placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(240, 140))}`} src={getIMG(contentItem.poster, "w500")} layout="fill" objectFit="contain"></Image>
         </div>
         <div className={`${styles.detailsStats}`}>
           <p className="heading-XL c-white">{contentItem.title}</p>
