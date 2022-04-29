@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image';
+import styles from '../styles/MediaDetails.module.css'
 import { getIMG, parseContentItem, parseProviderData } from '../utilities';
 const MediaDetails = ({ contentData, router, setTitle }) => {
 
@@ -11,14 +12,13 @@ const MediaDetails = ({ contentData, router, setTitle }) => {
   const categories = Object.keys(providerData).filter(category => providerData[category].length !== 0)
   setTitle(`${contentItem.title} (${contentItem.year})`);
   return (
-    <div className="details">
-      <button className="button back-button" onClick={() => router.back()}>Go Back</button>
+    <div className={`${styles.details}`}>
+      <button className={`button back-button`} onClick={() => router.back()}>Go Back</button>
       <div>
-        {/* <p className="c-white">{JSON.stringify(contentItem)}</p> */}
-        <div className="poster-wrapper">
+        <div className={`${styles.posterWrapper}`}>
           <Image src={getIMG(contentItem.poster, "w500")} layout="fill" objectFit="contain"></Image>
         </div>
-        <div className="details-stats">
+        <div className={`${styles.detailsStats}`}>
           <p className="heading-XL c-white">{contentItem.title}</p>
           <p className="heading-M c-fadedgrey">{contentItem.tagline}</p>
           <br></br>
@@ -36,25 +36,25 @@ const MediaDetails = ({ contentData, router, setTitle }) => {
           <br></br>
           <p className="heading-XS c-white">Top Cast</p>
           <ul>
-            {creditsData.cast.slice(0, 15).map((castMember, index) => <li key={index} onClick={() => router.push(`/details/person/${castMember.id}`)} className="cast-member">{castMember.name}</li>)}
+            {creditsData.cast.slice(0, 15).map((castMember, index) => <li key={index} onClick={() => router.push(`/details/person/${castMember.id}`)} className={`${styles.castMember}`}>{castMember.name}</li>)}
           </ul>
         </div>
       </div>
       <div>
-        {!!videoKey ? <iframe src={`https://www.youtube.com/embed/${videoKey}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> :
-          <div className="video-placeholder">
+        {!!videoKey ? <iframe className={styles.iframe} src={`https://www.youtube.com/embed/${videoKey}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> :
+          <div>
             <p className="heading-XL c-white">No Video Available</p>
           </div>}
-        <div className="providers-display">
+        <div className={`${styles.providersDisplay}`}>
           <p>{categories.length > 1 ? `${contentItem.title} is available to ${categories.slice(0, -1).map(category => category==="ads" ? "watch with ads" : category==="free" ? "watch for free" : category).join(', ') + ' and ' + categories.slice(-1)}!` : categories.length > 0 ? `${contentItem.title} is avaliable to ${categories[0]}!` : `We don't know where ${contentItem.title} is available to watch.`}</p>
-          <ul className="provider-categories-list">
+          <ul>
             {!!categories && categories.map((category, index) =>
               <>
-                <li key={index} className="provider-category">{category}:</li>
+                <li key={index} className={`${styles.providerCategory}`}>{category}:</li>
                 <li key={index}>
-                  <ul className="provider-list">
+                  <ul className={`${styles.providerList}`}>
                     {providerData[category].map((provider, index) =>
-                      <li key={index} className="provider">
+                      <li key={index} className={`${styles.provider}`}>
                         <Image width="50px" height="50px" style={{ borderRadius: "10px" }} src={getIMG(provider.logo)}></Image>
                         <p>{provider.name}</p>
                       </li>

@@ -1,14 +1,18 @@
 import '../styles/globals.css'
 import '../styles/utilities.css'
-import '../styles/styles.css'
-import Head from 'next/head'
-import Navbar from '../components/Navbar'
+
 import { useState, useEffect } from 'react'
-import SearchBar from '../components/SearchBar'
-import Footer from '../components/Footer'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { placeholders } from '../utilities'
 import NextNProgress from "nextjs-progressbar";
+
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
+import SearchBar from '../components/SearchBar'
+
+
+import { placeholders } from '../utilities'
+
 import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'

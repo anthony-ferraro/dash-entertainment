@@ -1,7 +1,7 @@
 import { paths } from "../utilities";
 import Collection from "../components/Collection";
 export default function Home({ router, userData }) {
-  const displayCount = 11;
+  const displayCount = 12;
   return (
     <>
       <Collection label="Trending Now" path={paths.trending.all} type="wide" displayCount={displayCount} router={router} userData={userData} morePath="/trending?page=1"></Collection>

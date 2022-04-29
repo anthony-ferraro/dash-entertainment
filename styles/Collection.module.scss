@@ -1,0 +1,61 @@
+@import './utilities.scss';
+
+.labels {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+
+    p:nth-of-type(2) {
+        user-select: none;
+
+        &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+}
+
+.wideList {
+    height: 230px;
+    flex-shrink: 0;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    display: flex;
+    gap: 15px;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.contentList {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 20px 30px;
+    padding-top: 10px;
+    margin-bottom: 50px;
+}
+
+@media(max-width: 1300px) {
+    .contentList {
+        gap: 30px;
+    }
+}
+
+@media(max-width: 800px) {
+    .wide-list {
+        height: 140px;
+        padding: 0px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+}

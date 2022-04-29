@@ -88,11 +88,11 @@
   color: var(--semidarkblue);
 }
 
-.bg-semidarkblue, .navbar {
+.bg-semidarkblue {
   background-color: var(--semidarkblue);
 }
 
-.c-white, .button, .input, .search, .navbar {
+.c-white, .button, .input, .search {
   color: #ffffff;
 }
 
@@ -149,13 +149,9 @@
   cursor: pointer;
 }
 
-.navbar {
-  border-radius: 20px;
-  width: 100px;
-  height: 90vh;
-  margin: 30px;
-  margin-top: 0px;
-  padding: 30px;
+.footer {
+  margin-top: 20px;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -163,108 +159,37 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  z-index: 100;
 }
 
-.navbar > div {
-  height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+.footer p {
+  background-image: -webkit-gradient(linear, left top, right top, from(#D3A615), to(#0DB5DF));
+  background-image: linear-gradient(90deg, #D3A615, #0DB5DF);
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 5px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
-.logo {
+.footer div {
+  display: inline-block;
+}
+
+.logoWrapper {
+  width: 150px;
+  height: 50px;
   position: relative;
-  width: 35px;
-  height: 35px;
 }
 
-.icons {
-  height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.icons img {
-  width: 20px;
-  height: 20px;
-}
-
-.icon.active path {
-  fill: white;
-}
-
-.icon:hover {
+.logoWrapper:hover {
   cursor: pointer;
 }
-
-.icon:hover path {
-  fill: var(--red);
-}
-
-@media (max-width: 1300px) {
-  .navbar {
-    margin: 25px 0px;
-    padding: 0px;
-    width: 100%;
-    height: 72px;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-    border-radius: 10px;
-  }
-  .navbar > div {
-    width: 100%;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-  }
-  .icons {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-    width: 100%;
-  }
-}
-
-@media (max-width: 600px) {
-  .navbar {
-    margin: 15px 0px;
-    width: 100%;
-  }
-}
-/*# sourceMappingURL=Navbar.module.css.map */
+/*# sourceMappingURL=Footer.module.css.map */

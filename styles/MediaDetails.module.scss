@@ -1,0 +1,151 @@
+@import './utilities.scss';
+
+.details {
+    width: 100%;
+    padding: 20px;
+    padding-top: 0px;
+}
+
+.details>div {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    padding-left: 0px;
+    justify-content: flex-start;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.posterWrapper {
+    width: 30%;
+    min-width: 300px;
+    height: 500px;
+    position: relative;
+    flex-shrink: 0;
+    flex-grow: 1;
+}
+
+.detailsStats {
+    flex-grow: 0;
+    flex-shrink: 1;
+    width: 60%;
+    max-width: 60%;
+    padding-left: 20px;
+    >p {
+        padding: 5px;
+        padding-left: 0px;
+    }
+    >div {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 80%;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        gap: 20px;
+    }
+}
+
+.castMember {
+    display: inline-block;
+    white-space: nowrap;
+    @extend .c-white;
+    user-select: none;
+    border: white 1px solid;
+    border-radius: 5px;
+    padding: 2px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.providersDisplay {
+    display: flex;
+    flex-direction: column;
+
+    >p {
+        margin-bottom: 5px;
+        @extend .c-white;
+        @extend .heading-XS;
+    }
+}
+
+.providerCategory {
+    @extend .heading-M;
+    @extend .c-white;
+
+    &:first-letter {
+        text-transform: uppercase;
+    }
+}
+
+.providerList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 10px 0px;
+}
+
+.provider {
+    @extend .c-white;
+    border-radius: 10px;
+    border: 1px white solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    padding-top: 10px;
+    width: 120px;
+    user-select: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    p {
+        font-size: 12px;
+    }
+}
+
+.iframe {
+    aspect-ratio: 16 / 9;
+    width: 50%;
+}
+
+@media(max-width: 1300px) {
+    .details {
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 10px;
+    }
+}
+
+@media(max-width: 900px) {
+    .iframe {
+        width: 100%;
+    }
+
+    .details>div:nth-of-type(1) {
+        flex-wrap: wrap;
+    }
+}
+
+@media(max-width: 800px) {
+    .detailsStats {
+        width: unset;
+        max-width: unset;
+    }
+}
+
+@media(max-width: 600px) {
+    .details {
+        padding-top: 30px;
+    }
+}

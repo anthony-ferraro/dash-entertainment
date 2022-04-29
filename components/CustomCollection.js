@@ -1,6 +1,7 @@
 import React from 'react'
 import CollectionItem from './CollectionItem'
 import Paginator from './Paginator'
+import styles from '../styles/Collection.module.css';
 
 const CustomCollection = ({ type = "normal", contentList, label, router, pagination = false, morePath = "", app, userData }) => {
     const handleClick = (contentItem) => {
@@ -8,13 +9,12 @@ const CustomCollection = ({ type = "normal", contentList, label, router, paginat
     }
     return (
         <>
-            {/* <p className="c-white">{JSON.stringify(contentList)}</p> */}
-            <div className="labels">
+            <div className={`${styles.labels}`}>
                 <p className="heading-L c-white">{label}</p>
                 {morePath !== "" && <p onClick={() => router.push(morePath)} className="body-M c-greyblue">VIEW MORE</p>}
             </div>
 
-            <div className={type === "wide" ? "wide-list" : type === "normal" ? "content-list" : "content-list"}>
+            <div className={type === "wide" ? `${styles.wideList}` : type === "normal" ? `${styles.contentList}` : `${styles.contentList}`}>
                 {contentList.map((contentItem, index) =>
                     <CollectionItem key={index} contentItem={contentItem} type={type} handleClick={handleClick} app={app} userData={userData}></CollectionItem>
                 )}

@@ -18,7 +18,6 @@ const Profile = ({ router, app, userData, userDataLoading }) => {
     } else if (userDataLoading) {
         return (
             <>
-                <p className="c-white">Loading...</p>
             </>
         )
     } else {

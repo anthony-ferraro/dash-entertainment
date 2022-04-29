@@ -1,0 +1,27 @@
+@import './utilities.scss';
+
+.genreList {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 20px;
+}
+
+.genreItem {
+    flex-grow: 1;
+    min-width: 220px;
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @extend .bg-greyblue;
+    @extend .c-white;
+    @extend .heading-M;
+    flex-basis: 200px;
+    border-radius: 10px;
+    user-select: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

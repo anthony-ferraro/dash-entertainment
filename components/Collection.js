@@ -1,5 +1,6 @@
 import React from 'react'
 import useSWR from 'swr'
+import styles from '../styles/Collection.module.css';
 import { getURL, parse } from '../utilities'
 import CollectionItem from './CollectionItem'
 import Paginator from './Paginator'
@@ -39,13 +40,12 @@ const Collection = ({ type = "normal", displayCount, path, optional = "", label,
         const contentList = (displayCount === undefined || (displayCount !== undefined && displayCount > parse(data).length)) ? parse(data) : parse(data).slice(0, displayCount);
         return (
             <>
-                {/* <p className="c-white">{JSON.stringify(contentList)}</p> */}
-                <div className="labels">
+                <div className={`${styles.labels}`}>
                     <p className="heading-L c-white">{label}</p>
                     {morePath !== "" && <p onClick={() => router.push(morePath)} className="body-M c-greyblue">VIEW MORE</p>}
                 </div>
 
-                <div className={type === "wide" ? "wide-list" : type === "normal" ? "content-list" : "content-list"}>
+                <div className={type === "wide" ? `${styles.wideList}` : type === "normal" ? `${styles.contentList}` : `${styles.contentList}`}>
                     {contentList.map((contentItem, index) =>
                         <CollectionItem key={index} contentItem={contentItem} type={type} handleClick={handleClick} app={app} userData={userData}></CollectionItem>
                     )}

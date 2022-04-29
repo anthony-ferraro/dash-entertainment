@@ -1,0 +1,32 @@
+@import './utilities.scss';
+
+.footer {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        background-image: linear-gradient(90deg, #D3A615, #0DB5DF);
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 5px;
+        user-select: none;
+    }
+
+    div {
+        display: inline-block;
+    }
+}
+
+.logoWrapper {
+    width: 150px;
+    height: 50px;
+    position: relative;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

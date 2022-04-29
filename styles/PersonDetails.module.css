@@ -88,11 +88,11 @@
   color: var(--semidarkblue);
 }
 
-.bg-semidarkblue, .navbar {
+.bg-semidarkblue {
   background-color: var(--semidarkblue);
 }
 
-.c-white, .button, .input, .search, .navbar {
+.c-white, .button, .input, .search {
   color: #ffffff;
 }
 
@@ -149,13 +149,29 @@
   cursor: pointer;
 }
 
-.navbar {
-  border-radius: 20px;
+.back-button {
   width: 100px;
-  height: 90vh;
-  margin: 30px;
-  margin-top: 0px;
-  padding: 30px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.details {
+  width: 100%;
+  padding: 20px;
+  padding-top: 0px;
+}
+
+.details > div:nth-of-type(1) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+.knownFor {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -163,108 +179,92 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  z-index: 100;
 }
 
-.navbar > div {
-  height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.logo {
+.posterWrapper {
+  width: 30%;
+  min-width: 300px;
+  height: 500px;
   position: relative;
-  width: 35px;
-  height: 35px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 
-.icons {
-  height: 100%;
+.detailsStats {
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  width: 60%;
+  max-width: 60%;
+  padding-left: 20px;
+}
+
+.detailsStats > p {
+  padding: 5px;
+  padding-left: 0px;
+}
+
+.detailsStats > div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 80%;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.icons img {
-  width: 20px;
-  height: 20px;
-}
-
-.icon.active path {
-  fill: white;
-}
-
-.icon:hover {
-  cursor: pointer;
-}
-
-.icon:hover path {
-  fill: var(--red);
+  margin-bottom: 20px;
+  gap: 20px;
 }
 
 @media (max-width: 1300px) {
-  .navbar {
-    margin: 25px 0px;
-    padding: 0px;
-    width: 100%;
-    height: 72px;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-    border-radius: 10px;
+  .details {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 10px;
   }
-  .navbar > div {
-    width: 100%;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+}
+
+@media (max-width: 900px) {
+  .details > div:nth-of-type(1) {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
   }
-  .icons {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
+  .detailsStats {
     width: 100%;
+    max-width: unset;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .details-stats {
+    width: unset;
+    max-width: unset;
+  }
+  .details > div {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
 }
 
 @media (max-width: 600px) {
-  .navbar {
-    margin: 15px 0px;
-    width: 100%;
+  .details {
+    padding-top: 30px;
   }
 }
-/*# sourceMappingURL=Navbar.module.css.map */
+/*# sourceMappingURL=PersonDetails.module.css.map */

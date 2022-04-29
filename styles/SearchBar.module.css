@@ -1,4 +1,4 @@
-.search-wrapper {
+.searchWrapper {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -10,17 +10,26 @@
   padding-left: 0px;
 }
 
-.search-wrapper img {
+.searchWrapper img {
   width: 25px;
   height: 25px;
   margin-right: 10px;
 }
 
-.search-button {
+.searchButton {
   width: 100px;
   padding: 10px;
   border-radius: 8px;
   border: none;
   margin-left: 20px;
+}
+
+@media (max-width: 800px) {
+  .searchWrapper {
+    margin-top: 20px;
+  }
+  .searchButton {
+    display: none;
+  }
 }
 /*# sourceMappingURL=SearchBar.module.css.map */

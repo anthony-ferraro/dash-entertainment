@@ -147,16 +147,10 @@
     }
 }
 
-// .bookmark {
-//     background-color: #979797;
-//     border-radius: 50%;
-//     width: 32px;
-//     height: 32px;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     &:hover {
-//         @extend .bg-white;
-//         cursor: pointer;
-//     }
-// }
+.back-button {
+    width: 100px;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 20px;
+}

@@ -1,4 +1,4 @@
-.search-wrapper {
+.searchWrapper {
     width: 100%;
     display: flex;
     align-items: center;
@@ -12,10 +12,20 @@
     }
 }
 
-.search-button {
+.searchButton {
     width: 100px;
     padding: 10px;
     border-radius: 8px;
     border: none;
     margin-left: 20px;
+}
+
+@media(max-width: 800px) {
+    .searchWrapper {
+        margin-top: 20px;
+    }
+
+    .searchButton {
+        display: none;
+    }
 }

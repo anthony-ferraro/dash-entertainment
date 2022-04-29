@@ -1,5 +1,5 @@
 import React from 'react'
-
+import styles from '../styles/Paginator.module.css';
 const Paginator = ({ numPages, router }) => {
     const handlePageChange = (direction) => {
         switch (direction) {
@@ -27,7 +27,7 @@ const Paginator = ({ numPages, router }) => {
     }
     return (
         <>
-            <div className="paginator">
+            <div className={`${styles.paginator}`}>
                 <a onClick={() => handlePageChange("previous")}>{"< Prev"}</a>
                 <p>{`Page ${router.query.page} of ${numPages}`}</p>
                 <a onClick={() => handlePageChange("next")}>{"Next >"}</a>

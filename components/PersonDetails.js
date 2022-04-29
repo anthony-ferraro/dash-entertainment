@@ -2,24 +2,25 @@ import React from 'react'
 import Image from 'next/image'
 import { getIMG } from '../utilities';
 import Collection from '../components/Collection'
+import styles from '../styles/PersonDetails.module.css';
 const PersonDetails = ({ personData, router, path, personID, setTitle }) => {
     const personDetails = personData[0];
     const knownFor = personData[1];
     setTitle(`${personDetails.name}`);
     return (
         <>
-            <div className="details">
+            <div className={`${styles.details}`}>
                 <button className="button back-button" onClick={() => router.back()}>Go Back</button>
                 <div>
-                    <div className="poster-wrapper">
+                    <div className={`${styles.posterWrapper}`}>
                         <Image src={getIMG(personDetails.profile_path, "w500")} layout="fill" objectFit="contain"></Image>
                     </div>
-                    <div className="details-stats">
+                    <div className={`${styles.detailsStats}`}>
                         <p className="heading-XL c-white">{personDetails.name}</p>
                         <p className="body-M c-white">{personDetails.biography}</p>
                     </div>
                 </div>
-                <div className="known-for">
+                <div className={`${styles.knownFor}`}>
                     <Collection label="Best Known For" type="normal" path={`person/${personID}/combined_credits`} router={router}></Collection>
                 </div>
             </div>

@@ -1,0 +1,73 @@
+@import "utilities.scss";
+
+.signinWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.signin {
+    max-width: 400px;
+    height: 420px;
+    padding: 35px 30px;
+    @extend .bg-semidarkblue;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 5px;
+    flex-shrink: 0;
+
+    &>p {
+        margin-bottom: 10px;
+    }
+}
+
+.signinButton {
+    width: 90%;
+    height: 40px;
+    border-radius: 0px;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    align-self: center;
+    border-radius: 5px;
+    @extend .body-M;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.logoWrapper {
+    display: inline;
+    width: 18px;
+    height: 18px;
+    margin: 0px 10px;
+    position: relative;
+}
+
+.google {
+    background-color: white;
+    color: black;
+}
+
+.facebook {
+    background-color: #3B5998;
+    color: white;
+}
+
+.twitter {
+    background-color: #55ACEE;
+    color: white;
+}
+
+.email {
+    background-color: #FC4747;
+    color: white;
+}

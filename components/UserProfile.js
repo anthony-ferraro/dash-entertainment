@@ -21,7 +21,7 @@ const UserProfile = ({ router, app, userData, signOut }) => {
             }
             return f(urls);
         }
-        if(urls.length >= 1) {
+        if (urls.length >= 1) {
             const data = await fetcher(...urls);
             setContentList(parse(data));
             setLoading(false);
@@ -34,30 +34,14 @@ const UserProfile = ({ router, app, userData, signOut }) => {
         }
     }, [userData])
 
-
-
-    // //when data is 
-    // const useLatestContent = () => {
-    //     const get = async () => {
-
-    //     }
-    //     const update = async () => {
-
-    //     }
-    //     const [data, setData] = useState(null);
-    //     const [loading, setLoading] = useState(true);
-
-    //     return [data, loading, update]
-    // }
     return (
         <>
             <h1 className="c-white"> Hello, {userData.displayName}</h1>
-            <p className="c-white">{JSON.stringify(contentList)}</p>
+            <p className="c-white">movie {JSON.stringify(userData.bookmarked_movie)}</p>
+            <p className="c-white">tv {JSON.stringify(userData.bookmarked_tv)}</p>
+            <p className="c-white">person {JSON.stringify(userData.bookmarked_person)}</p>
             <button className="button" onClick={() => signOut()}>Sign Out</button>
-            {loading ? <div>Loading...</div> : urls.length >= 1 && <CustomCollection type="normal" contentList={contentList} label="Your Favorites" router={router} pagination={false} morePath="" app={app} userData={userData} ></CustomCollection>}
-            {/* {moviePaths.length > 0 && <Collection label="Your Favorite Movies" path={moviePaths} router={router} userData={userData}></Collection>}
-            {tvPaths.length > 0 && <Collection label="Your Favorite TV Series" path={tvPaths} router={router} userData={userData}></Collection>}
-            {personPaths.length > 0 && <Collection label="Your Favorite People" path={personPaths} router={router} userData={userData}></Collection>} */}
+            {loading ? null : urls.length >= 1 && <CustomCollection type="normal" contentList={contentList} label="Your Favorites" router={router} pagination={false} morePath="" app={app} userData={userData} ></CustomCollection>}
 
         </>
     )
