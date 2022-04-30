@@ -18,6 +18,7 @@ const CustomCollection = ({ type = "normal", contentList, label, router, paginat
                 {contentList.map((contentItem, index) =>
                     <CollectionItem key={index} contentItem={contentItem} type={type} handleClick={handleClick} app={app} userData={userData}></CollectionItem>
                 )}
+                {contentList.map((contentItem, index) => <div key={index} className={styles.spacer}></div>)}
             </div>
             {pagination && <Paginator numPages={data.total_pages} router={router}></Paginator>}
         </>

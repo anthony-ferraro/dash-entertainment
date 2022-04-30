@@ -149,6 +149,14 @@
   cursor: pointer;
 }
 
+.back-button {
+  width: 100px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 20px;
+}
+
 .footer {
   margin-top: 20px;
   width: 100%;

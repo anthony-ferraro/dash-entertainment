@@ -40,7 +40,7 @@
   line-height: 16.38px;
 }
 
-.c-red, .input.error::after {
+.c-red, .input.error::after, .icon:hover {
   color: var(--red);
 }
 
@@ -92,7 +92,7 @@
   background-color: var(--semidarkblue);
 }
 
-.c-white, .button, .input, .search, .navbar {
+.c-white, .button, .input, .search, .navbar, .icon.active {
   color: #ffffff;
 }
 
@@ -149,6 +149,14 @@
   cursor: pointer;
 }
 
+.back-button {
+  width: 100px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 20px;
+}
+
 .navbar {
   border-radius: 20px;
   width: 100px;
@@ -192,6 +200,10 @@
   height: 35px;
 }
 
+.logo:hover {
+  cursor: pointer;
+}
+
 .icons {
   height: 100%;
   display: -webkit-box;
@@ -212,6 +224,10 @@
 .icons img {
   width: 20px;
   height: 20px;
+}
+
+.icon path {
+  fill: #5A698F;
 }
 
 .icon.active path {

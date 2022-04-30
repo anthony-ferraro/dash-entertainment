@@ -34,13 +34,13 @@
   line-height: 18.9px;
 }
 
-.body-S, .input.error::after {
+.body-S, .input.error::after, .labels p:nth-of-type(2) {
   font-weight: 300;
   font-size: 13px;
   line-height: 16.38px;
 }
 
-.c-red, .input.error::after {
+.c-red, .input.error::after, .labels p:nth-of-type(2) {
   color: var(--red);
 }
 
@@ -149,6 +149,14 @@
   cursor: pointer;
 }
 
+.back-button {
+  width: 100px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 20px;
+}
+
 .labels {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -171,11 +179,28 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  font-weight: bold;
 }
 
 .labels p:nth-of-type(2):hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.spacer {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+  min-width: 280px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  height: 0px;
 }
 
 .wideList {
@@ -184,7 +209,7 @@
       flex-shrink: 0;
   width: 100%;
   margin-top: 10px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -212,23 +237,25 @@
           justify-content: flex-start;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  gap: 20px 30px;
+  gap: 0px 30px;
   padding-top: 10px;
-  margin-bottom: 50px;
 }
 
 @media (max-width: 1300px) {
-  .contentList {
-    gap: 30px;
+  .spacer {
+    min-width: 220px;
   }
 }
 
 @media (max-width: 800px) {
-  .wide-list {
+  .wideList {
     height: 140px;
     padding: 0px;
     margin-top: 10px;
     margin-bottom: 20px;
+  }
+  .spacer {
+    min-width: 164px;
   }
 }
 /*# sourceMappingURL=Collection.module.css.map */

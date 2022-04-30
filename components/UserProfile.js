@@ -33,16 +33,19 @@ const UserProfile = ({ router, app, userData, signOut }) => {
             update();
         }
     }, [userData])
-
     return (
         <>
-            <h1 className="c-white"> Hello, {userData.displayName}</h1>
-            <p className="c-white">movie {JSON.stringify(userData.bookmarked_movie)}</p>
-            <p className="c-white">tv {JSON.stringify(userData.bookmarked_tv)}</p>
-            <p className="c-white">person {JSON.stringify(userData.bookmarked_person)}</p>
-            <button className="button" onClick={() => signOut()}>Sign Out</button>
+            <div style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+                <h1 className="c-white"> Welcome, {userData.displayName}!</h1>
+                <button className="button back-button" onClick={() => signOut()}>Sign Out</button>
+            </div>
+            <p className="body-L c-greyblue" style={{paddingBottom: "10px"}}>You have been a member since {new Date(parseInt(userData.createdAt)).toLocaleDateString('en-us')}</p>
             {loading ? null : urls.length >= 1 && <CustomCollection type="normal" contentList={contentList} label="Your Favorites" router={router} pagination={false} morePath="" app={app} userData={userData} ></CustomCollection>}
-
+            {(() => {
+                if(!urls || urls.length==0) {
+                    return <h1 className="c-greyblue" style={{marginTop: "10px", marginBottom: "10px"}}>You haven't favorited anything yet</h1>
+                }
+            })()}
         </>
     )
 }

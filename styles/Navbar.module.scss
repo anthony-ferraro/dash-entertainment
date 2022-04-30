@@ -27,6 +27,10 @@
     position: relative;
     width: 35px;
     height: 35px;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .icons {
@@ -42,13 +46,19 @@
 }
 
 .icon{
+    // color: #5A698F;
+    path {
+        fill: #5A698F;
+    }
     &.active {
+        @extend .c-white;
         path {
             fill: white;
         }
     }
     &:hover {
         cursor: pointer;
+        @extend .c-red;
         path {
             fill: var(--red);
         }

@@ -50,7 +50,9 @@ function MyApp({ Component, pageProps }) {
         const docRef = doc(db, "users", user.uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          // do nothing
+          updateDoc(docRef, {
+            lastLogin: user.metadata.lastLoginAt
+          })
         } else {
           // create a new user in the database
           const newUser = {
@@ -58,6 +60,8 @@ function MyApp({ Component, pageProps }) {
             displayName: user.displayName,
             email: user.email,
             photoURL: user.photoURL,
+            createdAt: user.metadata.createdAt,
+            lastLoginAt: user.metadata.lastLoginAt,
             bookmarked_movie: [],
             bookmarked_tv: [],
             bookmarked_person: [],
@@ -80,9 +84,9 @@ function MyApp({ Component, pageProps }) {
         <NextNProgress height={6} color="#FC4747" options={{ showSpinner: false }}></NextNProgress>
         <Navbar router={router} ></Navbar>
         <div className="container">
-          {currentPath !== "404" && currentPath !== "details" && currentPath !== "user" && <SearchBar placeholder={searchPlaceholder} searchPath={localSearchPath} searchQuery={searchQuery} setSearchQuery={setSearchQuery} router={router}></SearchBar>}
+          {currentPath !== "404" && currentPath !== "details" && currentPath !== "favorites" && <SearchBar placeholder={searchPlaceholder} searchPath={localSearchPath} searchQuery={searchQuery} setSearchQuery={setSearchQuery} router={router}></SearchBar>}
           <Component {...pageProps} router={router} app={app} userData={userData} userDataLoading={userDataLoading}></Component>
-          {currentPath !== "404" && currentPath !== "user" && <Footer router={router}></Footer>}
+          {currentPath !== "404" && (currentPath !== "favorites" || currentPath==="favorites" && userData) && <Footer router={router}></Footer>}
         </div>
       </div>
     </>

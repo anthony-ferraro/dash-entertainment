@@ -149,6 +149,14 @@
   cursor: pointer;
 }
 
+.back-button {
+  width: 100px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 20px;
+}
+
 .bookmark {
   position: absolute;
   top: 20px;
@@ -239,6 +247,7 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  margin-bottom: 30px;
 }
 
 .contentItem:hover {
@@ -246,7 +255,7 @@
 }
 
 @media (max-width: 1300px) {
-  .content-item {
+  .contentItem {
     min-width: 220px;
   }
 }
@@ -269,7 +278,7 @@
     font-size: 15px;
     line-height: 20px;
   }
-  .content-item {
+  .contentItem {
     min-width: 164px;
   }
 }

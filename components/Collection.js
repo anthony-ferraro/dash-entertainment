@@ -16,7 +16,7 @@ const Collection = ({ type = "normal", displayCount, path, optional = "", label,
         }
         return f(urls);
     }
-    
+
     const paths = Array.isArray(path) ? path.map(path => getURL(path)) : getURL(path, optional);
 
     const { data, error } = useSWR(paths, fetcher)
@@ -42,13 +42,14 @@ const Collection = ({ type = "normal", displayCount, path, optional = "", label,
             <>
                 <div className={`${styles.labels}`}>
                     <p className="heading-L c-white">{label}</p>
-                    {morePath !== "" && <p onClick={() => router.push(morePath)} className="body-M c-greyblue">VIEW MORE</p>}
+                    {morePath !== "" && <p onClick={() => router.push(morePath)}>VIEW MORE</p>}
                 </div>
 
                 <div className={type === "wide" ? `${styles.wideList}` : type === "normal" ? `${styles.contentList}` : `${styles.contentList}`}>
                     {contentList.map((contentItem, index) =>
                         <CollectionItem key={index} contentItem={contentItem} type={type} handleClick={handleClick} app={app} userData={userData}></CollectionItem>
                     )}
+                    {contentList.map((contentItem, index) => <div key={index} className={styles.spacer}></div>)}
                 </div>
                 {pagination && <Paginator numPages={data.total_pages} router={router}></Paginator>}
             </>

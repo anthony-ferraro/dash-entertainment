@@ -11,7 +11,8 @@
 
 .signin {
     max-width: 400px;
-    height: 420px;
+    // height: 420px; //with facebook
+    height: 360px;
     padding: 35px 30px;
     @extend .bg-semidarkblue;
     border-radius: 20px;

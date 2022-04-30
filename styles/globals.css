@@ -150,6 +150,14 @@
   cursor: pointer;
 }
 
+.back-button {
+  width: 100px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 20px;
+}
+
 :root {
   --red: #FC4747;
   --darkblue: #10141E;

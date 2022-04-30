@@ -4,11 +4,14 @@ export default function Home({ router, userData }) {
   const displayCount = 12;
   return (
     <>
+      <h1 className="c-white">Dash Entertainment</h1>
+      <p className="body-L c-greyblue">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti officia cupiditate nobis mollitia voluptatum quos doloremque praesentium eius iste ex. Modi beatae, mollitia cumque pariatur quidem, commodi cum animi aperiam doloribus fuga sit quisquam vero ea impedit, nulla suscipit quos! Assumenda nulla fuga reiciendis quae ducimus ab officiis ad officia.
+        <br></br>
+        <br></br>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur itaque cumque error beatae debitis facilis!
+      </p>
       <Collection label="Trending Now" path={paths.trending.all} type="wide" displayCount={displayCount} router={router} userData={userData} morePath="/trending?page=1"></Collection>
-      <Collection label="In Theaters" path={paths.nowPlaying.movies} displayCount={displayCount} router={router} userData={userData} morePath="/movies/now-playing?page=1"></Collection>
-      <Collection label="Popular Movies" path={paths.popular.movies} displayCount={displayCount} router={router} userData={userData} morePath="/movies/popular?page=1"></Collection>
-      <Collection label="Airing Today" path={paths.nowPlaying.tv} type="wide" displayCount={displayCount} router={router} userData={userData} morePath="/tv/now-playing?page=1"></Collection>
-      <Collection label="Popular TV Series" path={paths.popular.tv} displayCount={displayCount} router={router} userData={userData} morePath="/tv/popular?page=1"></Collection>
     </>
   )
 }

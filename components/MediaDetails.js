@@ -26,19 +26,23 @@ const MediaDetails = ({ contentData, router, setTitle }) => {
           <p className="heading-L c-white">{contentItem.rating / 2}/5</p>
           <br></br>
           <div>
-            <div><p className="c-fadedgrey heading-XS">{contentItem.category === "movie" ? "Length" : "Seasons"}</p><p className="c-white heading-XS">{contentItem.category === "movie" ? contentItem.runtime : contentItem.seasons}{contentItem.category==="movie" && " min."}</p></div>
-            <div><p className="c-fadedgrey heading-XS">Language</p><p className="c-white heading-XS">{contentItem.language}</p></div>
-            <div><p className="c-fadedgrey heading-XS">Year</p><p className="c-white heading-XS">{contentItem.year}</p></div>
-            <div><p className="c-fadedgrey heading-XS">Status</p><p className="c-white heading-XS">{contentItem.status}</p></div>
+            <div><p className="c-fadedgrey heading-XS">{contentItem.category === "movie" ? "Length" : "Seasons"}</p><p className="c-white heading-XS">{contentItem.category === "movie" ? contentItem.runtime : contentItem.seasons}{contentItem.category === "movie" && " min."}</p></div>
+            {contentItem.language && <div><p className="c-fadedgrey heading-XS">Language</p><p className="c-white heading-XS">{contentItem.language}</p></div>}
+            {contentItem.year && <div><p className="c-fadedgrey heading-XS">Year</p><p className="c-white heading-XS">{contentItem.year}</p></div>}
+            {contentItem.status && <div><p className="c-fadedgrey heading-XS">Status</p><p className="c-white heading-XS">{contentItem.status}</p></div>}
 
           </div>
           <p className="heading-XS c-white">Synopsis</p>
           <p className="body-M c-white">{contentItem.synopsis}</p>
           <br></br>
-          <p className="heading-XS c-white">Top Cast</p>
-          <ul>
-            {creditsData.cast.slice(0, 15).map((castMember, index) => <li key={index} onClick={() => router.push(`/details/person/${castMember.id}`)} className={`${styles.castMember}`}>{castMember.name}</li>)}
-          </ul>
+          { creditsData.cast.length>0 && 
+            <>
+              <p className="heading-XS c-white">Top Cast</p>
+              <ul>
+                {creditsData.cast.slice(0, 15).map((castMember, index) => <li key={index} onClick={() => router.push(`/details/person/${castMember.id}`)} className={`${styles.castMember}`}>{castMember.name}</li>)}
+              </ul>
+            </>
+          }
         </div>
       </div>
       <div>
@@ -47,7 +51,7 @@ const MediaDetails = ({ contentData, router, setTitle }) => {
             <p className="heading-XL c-white">No Video Available</p>
           </div>}
         <div className={`${styles.providersDisplay}`}>
-          <p>{categories.length > 1 ? `${contentItem.title} is available to ${categories.slice(0, -1).map(category => category==="ads" ? "watch with ads" : category==="free" ? "watch for free" : category).join(', ') + ' and ' + categories.slice(-1)}!` : categories.length > 0 ? `${contentItem.title} is avaliable to ${categories[0]}!` : `We don't know where ${contentItem.title} is available to watch.`}</p>
+          <p>{categories.length > 1 ? `${contentItem.title} is available to ${categories.slice(0, -1).map(category => category === "ads" ? "watch with ads" : category === "free" ? "watch for free" : category).join(', ') + ' and ' + categories.slice(-1)}!` : categories.length > 0 ? `${contentItem.title} is avaliable to ${categories[0]}!` : `We don't know where ${contentItem.title} is available to watch.`}</p>
           <ul>
             {!!categories && categories.map((category, index) =>
               <>
