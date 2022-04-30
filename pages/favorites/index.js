@@ -12,7 +12,7 @@ const Profile = ({ router, app, userData, userDataLoading }) => {
     if (userData) {
         return (
             <>
-                <UserProfile router={router} userData={userData} signOut={() => signOut(auth)}></UserProfile>
+                {/* <UserProfile router={router} userData={userData} signOut={() => signOut(auth)}></UserProfile> */}
             </>
         )
     } else if (userDataLoading) {

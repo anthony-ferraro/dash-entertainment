@@ -43,7 +43,7 @@ const UserProfile = ({ router, app, userData, signOut }) => {
             {loading ? null : urls.length >= 1 && <CustomCollection type="normal" contentList={contentList} label="Your Favorites" router={router} pagination={false} morePath="" app={app} userData={userData} ></CustomCollection>}
             {(() => {
                 if(!urls || urls.length==0) {
-                    return <h1 className="c-greyblue" style={{marginTop: "10px", marginBottom: "10px"}}>You haven't favorited anything yet</h1>
+                    return <h1 className="c-greyblue" style={{marginTop: "10px", marginBottom: "10px"}}>You haven&apos;t favorited anything yet</h1>
                 }
             })()}
         </>
