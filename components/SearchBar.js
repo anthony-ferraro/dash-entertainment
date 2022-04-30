@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/dist/client/image';
 import styles from '../styles/SearchBar.module.css'
 const SearchBar = ({ router, searchPath, placeholder, searchQuery, setSearchQuery }) => {
     const handleSearch = () => {

@@ -4,7 +4,7 @@ import styles from '../styles/CollectionItem.module.css';
 import { shimmer, toBase64 } from '../utilities';
 import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
 import { useState, useEffect } from 'react';
-import { getFirestore, doc, setDoc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+import { getFirestore, doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 const CollectionItem = ({ contentItem, type, tall, handleClick, app, userData }) => {
   const bookmarkField = `bookmarked_${contentItem.category.toLowerCase()}`;
   const imageResolution = "w500";

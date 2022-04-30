@@ -2,10 +2,10 @@ import React from "react"
 import Image from "next/image";
 import styles from "../styles/SignIn.module.css";
 import { useState } from "react"
-import { FaFacebookSquare, FaTwitter } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { setPersistence, browserLocalPersistence, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { useSignInWithGoogle, useSignInWithFacebook, useSignInWithTwitter, useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useSignInWithGoogle, useSignInWithFacebook, useSignInWithTwitter } from "react-firebase-hooks/auth";
 
 
 const SignIn = ({ auth }) => {
