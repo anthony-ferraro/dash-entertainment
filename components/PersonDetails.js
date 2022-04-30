@@ -22,8 +22,8 @@ const PersonDetails = ({ personData, router, path, personID, setTitle }) => {
                         <p className="body-M c-white">{personDetails.biography}</p>
                     </div>
                 </div>
-                <div className={`${styles.knownFor}`}>
-                    <Collection label="Best Known For" type="normal" path={`person/${personID}/combined_credits`} router={router}></Collection>
+                <div className={`${styles.knownFor}`} style={{ marginTop: "10px", }}>
+                    <Collection label="Best Known For" type="normal" displayCount={12} path={`person/${personID}/combined_credits`} router={router}></Collection>
                 </div>
             </div>
 

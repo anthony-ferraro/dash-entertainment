@@ -1,5 +1,5 @@
 import React from 'react'
-import ChooseProvider from '../../components/ChooseProvider'
+import SignIn from '../../components/SignIn'
 import UserProfile from '../../components/UserProfile'
 import { getAuth, signOut } from 'firebase/auth';
 // import { getFirestore } from 'firebase/firestore';
@@ -23,7 +23,7 @@ const Profile = ({ router, app, userData, userDataLoading }) => {
     } else {
         return (
             <>
-                <ChooseProvider auth={auth}></ChooseProvider>
+                <SignIn auth={auth}></SignIn>
             </>
         )
     }

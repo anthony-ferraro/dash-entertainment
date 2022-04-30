@@ -7,7 +7,7 @@ export default function index({ router, app, userData }) {
             <Head>
                 <title>Trending People</title>
             </Head>
-            <Collection router={router} label="Trending People" type="normal" path={paths.popular.people} optional={`&page=${router.query.page}`} pagination={true} app={app} userData={userData}></Collection>
+            <Collection router={router} label="Trending People" type="normal" tall={true} path={paths.popular.people} optional={`&page=${router.query.page}`} pagination={true} app={app} userData={userData}></Collection>
         </>
     )
 }

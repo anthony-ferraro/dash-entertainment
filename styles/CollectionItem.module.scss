@@ -41,6 +41,7 @@
     width: 100%;
     min-height: 175px;
     border-radius: 8px;
+    height: 100%;
 
     &:hover {
         cursor: pointer;
@@ -88,6 +89,10 @@
     user-select: none;
     margin-bottom: 30px;
 
+    &.tall {
+        min-height: 400px;
+    }
+
     &:hover {
         cursor: pointer;
     }
@@ -122,6 +127,7 @@
             }
         }
     }
+
     .contentItem {
         min-width: 164px;
     }

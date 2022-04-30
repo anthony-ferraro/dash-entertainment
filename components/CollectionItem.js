@@ -5,7 +5,7 @@ import { shimmer, toBase64 } from '../utilities';
 import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
 import { useState, useEffect } from 'react';
 import { getFirestore, doc, setDoc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
-const CollectionItem = ({ contentItem, type, handleClick, app, userData }) => {
+const CollectionItem = ({ contentItem, type, tall, handleClick, app, userData }) => {
   const bookmarkField = `bookmarked_${contentItem.category.toLowerCase()}`;
   const imageResolution = "w500";
   const [localBookmarked, setLocalBookmarked] = useState(false);
@@ -34,7 +34,7 @@ const CollectionItem = ({ contentItem, type, handleClick, app, userData }) => {
     <>
       <div onClick={(e) =>
         (!e.target.classList.contains(`${styles.bookmark}`) && e.target.tagName !== "path" && e.target.tagName !== "svg") && handleClick(contentItem)
-      } className={type === "wide" ? `${styles.wideItem}` : type === "normal" ? `${styles.contentItem}` : `${styles.contentItem}`}>
+      } className={type === "wide" ? `${styles.wideItem}` : type === "normal" ? `${styles.contentItem} ${tall ? styles.tall : ""}` : `${styles.contentItem} ${tall ? styles.tall : ""}`}>
         <div className={`${styles.contentThumbnail}`}
           style={{
             position: 'relative',

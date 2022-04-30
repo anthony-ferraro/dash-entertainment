@@ -107,25 +107,21 @@
 
 .input { // used for input fields 
     @extend .c-white;
+    background-color: inherit;
     caret-color: var(--red);
+    border: none;
+    outline: none;
+    width: 100%;
     border-bottom: 1px var(--greyblue) solid;
+    padding: 10px;
     &::placeholder {
-        @extend .c-fadedgrey;
+        @extend .c-fadedgrey
     }
-
     &:focus {
         border-bottom: 1px white solid;
     }
-    position: relative;
-    &.error {
-        border-bottom: 1px var(--red) solid;
-        &::after {
-            content: "Can't be empty";
-            position: absolute;
-            right: -20px;
-            @extend .c-red;
-            @extend .body-S;
-        }
+    &:hover {
+        cursor: pointer;
     }
 }
 
@@ -136,6 +132,7 @@
     border: none;
     outline: none;
     width: 100%;
+    border-bottom: 1px transparent solid;
     &::placeholder {
         @extend .c-fadedgrey
     }
@@ -153,4 +150,7 @@
     border-radius: 8px;
     border: none;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

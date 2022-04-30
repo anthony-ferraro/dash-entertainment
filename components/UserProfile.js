@@ -36,8 +36,8 @@ const UserProfile = ({ router, app, userData, signOut }) => {
     return (
         <>
             <div style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-                <h1 className="c-white"> Welcome, {userData.displayName}!</h1>
-                <button className="button back-button" onClick={() => signOut()}>Sign Out</button>
+                <h1 className="c-white"> Welcome, {userData.displayName ? userData.displayName : userData.email}!</h1>
+                <button className="button back-button" style={{margin: "0px"}} onClick={() => signOut()}>Sign Out</button>
             </div>
             <p className="body-L c-greyblue" style={{paddingBottom: "10px"}}>You have been a member since {new Date(parseInt(userData.createdAt)).toLocaleDateString('en-us')}</p>
             {loading ? null : urls.length >= 1 && <CustomCollection type="normal" contentList={contentList} label="Your Favorites" router={router} pagination={false} morePath="" app={app} userData={userData} ></CustomCollection>}

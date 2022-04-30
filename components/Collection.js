@@ -7,7 +7,7 @@ import Paginator from './Paginator'
 import Loading from './Loading'
 
 
-const Collection = ({ type = "normal", displayCount, path, optional = "", label, router, morePath = "", pagination = false, app, userData }) => {
+const Collection = ({ type = "normal", displayCount, path, tall = false, optional = "", label, router, morePath = "", pagination = false, app, userData }) => {
     function fetcher(...urls) {
         const f = (u) => fetch(u).then((r) => r.json());
 
@@ -47,7 +47,7 @@ const Collection = ({ type = "normal", displayCount, path, optional = "", label,
 
                 <div className={type === "wide" ? `${styles.wideList}` : type === "normal" ? `${styles.contentList}` : `${styles.contentList}`}>
                     {contentList.map((contentItem, index) =>
-                        <CollectionItem key={index} contentItem={contentItem} type={type} handleClick={handleClick} app={app} userData={userData}></CollectionItem>
+                        <CollectionItem key={index} tall={tall} contentItem={contentItem} type={type} handleClick={handleClick} app={app} userData={userData}></CollectionItem>
                     )}
                     {contentList.map((contentItem, index) => <div key={index} className={styles.spacer}></div>)}
                 </div>
