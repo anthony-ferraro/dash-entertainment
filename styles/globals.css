@@ -35,13 +35,13 @@
   line-height: 18.9px;
 }
 
-.body-S, .input.error::after {
+.body-S {
   font-weight: 300;
   font-size: 13px;
   line-height: 16.38px;
 }
 
-.c-red, .input.error::after {
+.c-red {
   color: var(--red);
 }
 
@@ -115,23 +115,21 @@
 }
 
 .input {
+  background-color: inherit;
   caret-color: var(--red);
+  border: none;
+  outline: none;
+  width: 100%;
   border-bottom: 1px var(--greyblue) solid;
-  position: relative;
+  padding: 10px;
 }
 
 .input:focus {
   border-bottom: 1px white solid;
 }
 
-.input.error {
-  border-bottom: 1px var(--red) solid;
-}
-
-.input.error::after {
-  content: "Can't be empty";
-  position: absolute;
-  right: -20px;
+.input:hover {
+  cursor: pointer;
 }
 
 .search {
@@ -140,6 +138,7 @@
   border: none;
   outline: none;
   width: 100%;
+  border-bottom: 1px transparent solid;
 }
 
 .search:focus {
@@ -156,6 +155,15 @@
   border-radius: 8px;
   border: none;
   margin-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 :root {

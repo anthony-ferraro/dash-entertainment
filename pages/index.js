@@ -1,16 +1,12 @@
 import { paths } from "../utilities";
+import Hero from "../components/Hero";
 import Collection from "../components/Collection";
+import Image from 'next/image';
 export default function Home({ router, userData }) {
   const displayCount = 12;
   return (
     <>
-      <h1 className="c-white">Dash Entertainment</h1>
-      <p className="body-L c-greyblue">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti officia cupiditate nobis mollitia voluptatum quos doloremque praesentium eius iste ex. Modi beatae, mollitia cumque pariatur quidem, commodi cum animi aperiam doloribus fuga sit quisquam vero ea impedit, nulla suscipit quos! Assumenda nulla fuga reiciendis quae ducimus ab officiis ad officia.
-        <br></br>
-        <br></br>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur itaque cumque error beatae debitis facilis!
-      </p>
+      <Hero router={router}></Hero>
       <Collection label="Trending Now" path={paths.trending.all} type="wide" displayCount={displayCount} router={router} userData={userData} morePath="/trending?page=1"></Collection>
     </>
   )

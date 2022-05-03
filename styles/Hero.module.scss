@@ -1,0 +1,26 @@
+@import './utilities.scss';
+.hero {
+    @extend .bg-semidarkblue;
+    width: 100%;
+    padding: 20px;
+    border-radius: 15px;
+    >h4, >p {
+        margin-bottom: 15px;
+    }
+    >button {
+        margin-bottom: 0px;
+    }
+}
+.slogan {
+    @extend .c-greyblue;
+    @extend .heading-S;
+    margin-bottom: 10px;
+}
+
+.title {
+    @extend .c-white;
+    @extend .heading-L;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}

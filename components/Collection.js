@@ -42,7 +42,7 @@ const Collection = ({ type = "normal", displayCount, path, tall = false, optiona
             <>
                 <div className={`${styles.labels}`}>
                     <p className="heading-L c-white">{label}</p>
-                    {morePath !== "" && <p onClick={() => router.push(morePath)}>VIEW MORE</p>}
+                    {morePath !== "" && <p onClick={() => router.push(morePath)}>VIEW MORE&nbsp;</p>}
                 </div>
 
                 <div className={type === "wide" ? `${styles.wideList}` : type === "normal" ? `${styles.contentList}` : `${styles.contentList}`}>

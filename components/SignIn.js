@@ -73,7 +73,7 @@ const SignIn = ({ auth }) => {
                                         <input type="text" className="input" placeholder="Email Address"></input>
                                         <input type="text" className="input" placeholder="Password"></input>
                                         <button className="button back-button" onClick={() => handleSignIn()} style={{ width: "100%" }}>Sign in to your account</button>
-                                        <p className={`${styles.switchFlow}`}>{"Dont have an account?"}<span className="body-M c-red" onClick={() => setFlow("signup-with-email")}>Sign up</span></p>
+                                        <p className={`${styles.switchFlow}`}>{"Don't have an account?"}<span className="body-M c-red" onClick={() => setFlow("signup-with-email")}> Sign up</span></p>
                                     </>
                                 )
 
