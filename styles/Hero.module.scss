@@ -9,6 +9,7 @@
     }
     >button {
         margin-bottom: 0px;
+        width: 150px;
     }
 }
 .slogan {
@@ -19,8 +20,30 @@
 
 .title {
     @extend .c-white;
-    @extend .heading-L;
+    @extend .heading-M;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
+    h3 {
+        font-size: 35px;
+        font-weight: 400;
+    }
+}
+
+@media(max-width: 500px) {
+    .hero>button {
+        width: 100%;
+    }
+}
+
+@media(max-width: 450px) {
+    .title {
+        h3 {
+            font-size: 25px;
+        }
+    }
+
+    .slogan {
+        font-size: 20px;
+    }
 }

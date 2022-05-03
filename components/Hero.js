@@ -8,7 +8,7 @@ const Hero = ({ router }) => {
                 <div style={{ position: "relative", verticalAlign: "middle", width: "25px", height: "25px", flexShrink: "0", display: "inline-block", whiteSpace: "nowrap" }}>
                     <Image src="/assets/dash-logo.png" layout="fill" object-fit="contain"></Image>
                 </div>
-                <h3 className="c-white heading-L">&nbsp;Dash Entertainment</h3>
+                <h3>&nbsp;Dash Entertainment</h3>
             </div>
             <h4 className={styles.slogan}>Hollywood, at your fingertips.</h4>
             <p className="body-L c-greyblue">

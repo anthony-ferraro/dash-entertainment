@@ -4,13 +4,13 @@
   line-height: 60px;
 }
 
-.heading-L, .title {
+.heading-L {
   font-weight: 300;
   font-size: 32px;
   line-height: 40.32px;
 }
 
-.heading-M {
+.heading-M, .title {
   font-weight: 300;
   font-size: 24px;
   line-height: 30.24px;
@@ -177,6 +177,7 @@
 
 .hero > button {
   margin-bottom: 0px;
+  width: 150px;
 }
 
 .slogan {
@@ -191,5 +192,25 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.title h3 {
+  font-size: 35px;
+  font-weight: 400;
+}
+
+@media (max-width: 500px) {
+  .hero > button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 450px) {
+  .title h3 {
+    font-size: 25px;
+  }
+  .slogan {
+    font-size: 20px;
+  }
 }
 /*# sourceMappingURL=Hero.module.css.map */
