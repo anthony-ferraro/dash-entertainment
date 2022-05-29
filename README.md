@@ -8,6 +8,8 @@ Live Site URL: [Dash Entertainmnt](https://dash-entertainment.vercel.app)
 
 ### Features
 - Full stack web application
+- User authentication (OAuth and email/password)
+- Bookmarks
 - Responsive design
 - Utilizes a REST API
 - View trending Movies, TV Series, and Actors
@@ -17,6 +19,7 @@ Live Site URL: [Dash Entertainmnt](https://dash-entertainment.vercel.app)
 
 ### Built with
 - [Next.js Framework](https://nextjs.org/)
+- [Firebase](http://firebase.google.com/)
 - [SCSS](https://sass-lang.com/)
 - Powered by [TMDB - The Movie Database](https://www.themoviedb.org/) and [JustWatch.com](https://www.justwatch.com/) REST APIs
 - [SWR - React Hooks for Data Fetching](https://swr.vercel.app/)
@@ -32,6 +35,6 @@ This project was inspired by the [entertainment web app](https://www.frontendmen
 
 ### Author
 
-- Website - Coming Soon!
+- Website - [Anthony Ferraro](https://anthony-ferraro.vercel.app)
 - Linkedin - [a-ferraro](https://www.linkedin.com/in/a-ferraro/)
 
