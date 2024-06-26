@@ -4,12 +4,12 @@ import styles from '../styles/CollectionItem.module.css';
 import { shimmer, toBase64 } from '../utilities';
 import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
 import { useState, useEffect } from 'react';
-import { getFirestore, doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
-const CollectionItem = ({ contentItem, type, tall, handleClick, app, userData }) => {
+import { updateUserBookmarks } from "../utilities/firebase";
+
+const CollectionItem = ({ contentItem, type, tall, handleClick, userData }) => {
   const bookmarkField = `bookmarked_${contentItem.category.toLowerCase()}`;
   const imageResolution = "w500";
   const [localBookmarked, setLocalBookmarked] = useState(false);
-  const db = getFirestore(app);
 
   useEffect(() => {
     if (userData) {
@@ -17,16 +17,11 @@ const CollectionItem = ({ contentItem, type, tall, handleClick, app, userData })
     }
   }, [userData, contentItem])
 
-  const toggleRemoteBookmarked = () => {
-    const userRef = doc(db, "users", userData.uid);
+  const toggleRemoteBookmarked = async () => {
     if (userData[bookmarkField].includes(contentItem.id)) {
-      updateDoc(userRef, {
-        [bookmarkField]: arrayRemove(contentItem.id)
-      })
+      await updateUserBookmarks(userData.uid, bookmarkField, contentItem.id, 'remove');
     } else {
-      updateDoc(userRef, {
-        [bookmarkField]: arrayUnion(contentItem.id)
-      })
+      await updateUserBookmarks(userData.uid, bookmarkField, contentItem.id, 'add');
     }
   }
 
@@ -42,7 +37,7 @@ const CollectionItem = ({ contentItem, type, tall, handleClick, app, userData })
             borderRadius: '10px',
           }}
         >
-          <Image layout="fill" objectFit="cover" placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(240, 140))}`}src={`https://image.tmdb.org/t/p/${imageResolution}/${contentItem.image}`} style={{ filter: "brightness(70%)" }}></Image>
+          <Image layout="fill" objectFit="cover" placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(240, 140))}`} src={`https://image.tmdb.org/t/p/${imageResolution}/${contentItem.image}`} style={{ filter: "brightness(70%)" }}></Image>
           {userData && <div className={`${styles.bookmark}`} onClick={() => { setLocalBookmarked(!localBookmarked); toggleRemoteBookmarked() }}>{localBookmarked ? <BsBookmarkFill></BsBookmarkFill> : <BsBookmark></BsBookmark>}</div>}
         </div>
         <div className={`${styles.contentInfo}`}>
