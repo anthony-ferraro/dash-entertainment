@@ -1,28 +1,22 @@
-import React from 'react'
-import useSWR from 'swr'
+import React from 'react';
+import useSWR from 'swr';
 import styles from '../styles/Collection.module.css';
-import { getURL, parse } from '../utilities'
-import CollectionItem from './CollectionItem'
-import Paginator from './Paginator'
-import Loading from './Loading'
-
+import { getURL, parse, fetcher } from '../utilities';
+import CollectionItem from './CollectionItem';
+import Paginator from './Paginator';
+import Loading from './Loading';
 
 const Collection = ({ type = "normal", displayCount, path, tall = false, optional = "", label, router, morePath = "", pagination = false, app, userData }) => {
-    function fetcher(...urls) {
-        const f = (u) => fetch(u).then((r) => r.json());
+    const fetchMultiple = (...urls) => {
+        return urls.length > 1 ? Promise.all(urls.map(fetcher)) : fetcher(urls[0]);
+    };
 
-        if (urls.length > 1) {
-            return Promise.all(urls.map(f));
-        }
-        return f(urls);
-    }
+    const paths = Array.isArray(path) ? path.map((p) => getURL(p)) : getURL(path, optional);
+    const { data, error } = useSWR(paths, fetchMultiple);
 
-    const paths = Array.isArray(path) ? path.map(path => getURL(path)) : getURL(path, optional);
-
-    const { data, error } = useSWR(paths, fetcher)
     const handleClick = (contentItem) => {
-        router.push(`/details/${contentItem.category.toLowerCase()}/${contentItem.id}`)
-    }
+        router.push(`/details/${contentItem.category.toLowerCase()}/${contentItem.id}`);
+    };
 
     if (error) {
         return (
@@ -31,30 +25,41 @@ const Collection = ({ type = "normal", displayCount, path, tall = false, optiona
                 {label}
                 Failed to load content
             </div>
-        )
-    } else if (!data) {
-        return (
-            <Loading></Loading>
-        )
-    } else {
-        const contentList = (displayCount === undefined || (displayCount !== undefined && displayCount > parse(data).length)) ? parse(data) : parse(data).slice(0, displayCount);
-        return (
-            <>
-                <div className={`${styles.labels}`}>
-                    <p className="heading-L c-white">{label}</p>
-                    {morePath !== "" && <p onClick={() => router.push(morePath)}>VIEW MORE&nbsp;</p>}
-                </div>
-
-                <div className={type === "wide" ? `${styles.wideList}` : type === "normal" ? `${styles.contentList}` : `${styles.contentList}`}>
-                    {contentList.map((contentItem, index) =>
-                        <CollectionItem key={index} tall={tall} contentItem={contentItem} type={type} handleClick={handleClick} app={app} userData={userData}></CollectionItem>
-                    )}
-                    {contentList.map((contentItem, index) => <div key={index} className={styles.spacer}></div>)}
-                </div>
-                {pagination && <Paginator numPages={data.total_pages} router={router}></Paginator>}
-            </>
-        )
+        );
     }
-}
 
-export default Collection
+    if (!data) {
+        return <Loading />;
+    }
+
+    const contentList = (displayCount === undefined || displayCount > parse(data).length) ? parse(data) : parse(data).slice(0, displayCount);
+
+    return (
+        <>
+            <div className={styles.labels}>
+                <p className="heading-L c-white">{label}</p>
+                {morePath && <p onClick={() => router.push(morePath)}>VIEW MORE&nbsp;</p>}
+            </div>
+
+            <div className={type === "wide" ? styles.wideList : styles.contentList}>
+                {contentList.map((contentItem, index) => (
+                    <CollectionItem
+                        key={index}
+                        tall={tall}
+                        contentItem={contentItem}
+                        type={type}
+                        handleClick={handleClick}
+                        app={app}
+                        userData={userData}
+                    />
+                ))}
+                {contentList.map((_, index) => (
+                    <div key={index} className={styles.spacer}></div>
+                ))}
+            </div>
+            {pagination && <Paginator numPages={data.total_pages} router={router} />}
+        </>
+    );
+};
+
+export default Collection;
